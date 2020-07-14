@@ -1,0 +1,31 @@
+# LINEAR ALGEBRA
+
+### INSTALLING GUIDES
+
+#### Installing pip 19.1
+```
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+rm get-pip.py
+```
+To check that pip has been successfully downloaded, use pip -V. Your output should look like:
+```
+pip -V
+pip 19.1.1 from /usr/local/lib/python3.5/dist-packages/pip (python 3.5)
+```
+
+#### Installing numpy 1.15, scipy 1.3, and pycodestyle 2.5
+```
+pip install --user numpy==1.15
+pip install --user scipy==1.3
+pip install --user pycodestyle==2.5
+```
+To check that all have been successfully downloaded, use pip list.
+
+#### Slice Me Up [0-slice_me_up.py](./0-slice_me_up.py)
+- Complete the following source code (found below):
+	- arr1 should be the first two numbers of arr
+	- arr2 should be the last five numbers of arr
+	- arr3 should be the 2nd through 6th numbers of arr
+	- You are not allowed to use any loops or conditional statements
+	- Your program should be exactly 8 lines
