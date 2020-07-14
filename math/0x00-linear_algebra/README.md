@@ -36,3 +36,8 @@ To check that all have been successfully downloaded, use pip list.
 	- You are not allowed to use any conditional statements
 	- You are only allowed to use one for loop
 	- Your program should be exactly 6 lines
+
+#### Size Me Please [2-size_me_please.py](2-size_me_please.py)
+- Write a function def matrix_shape(matrix): that calculates the shape of a matrix:
+	- You can assume all elements in the same dimension are of the same type/shape
+	- The shape should be returned as a list of integers
