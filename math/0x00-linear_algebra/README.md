@@ -30,20 +30,26 @@ To check that all have been successfully downloaded, use pip list.
 	- You are not allowed to use any loops or conditional statements
 	- Your program should be exactly 8 lines
 
-#### Trim Me Down [1-trim_me_down.py](1-trim_me_down.py)
+#### Trim Me Down [1-trim_me_down.py](./1-trim_me_down.py)
 - Complete the following source code (found below):
 	- the_middle should be a 2D matrix containing the 3rd and 4th columns of matrix
 	- You are not allowed to use any conditional statements
 	- You are only allowed to use one for loop
 	- Your program should be exactly 6 lines
 
-#### Size Me Please [2-size_me_please.py](2-size_me_please.py)
+#### Size Me Please [2-size_me_please.py](./2-size_me_please.py)
 - Write a function def matrix_shape(matrix): that calculates the shape of a matrix:
 	- You can assume all elements in the same dimension are of the same type/shape
 	- The shape should be returned as a list of integers
 
-#### Flip Me Over [3-flip_me_over.py](3-flip_me_over.py)
+#### Flip Me Over [3-flip_me_over.py](./3-flip_me_over.py)
 - Write a function def matrix_transpose(matrix): that returns the transpose of a 2D matrix, matrix:
 	- You must return a new matrix
 	- You can assume that matrix is never empty
 	- You can assume all elements in the same dimension are of the same type/shape
+
+#### Line Up [4-line_up.py](./4-line_up.py)
+- Write a function def add_arrays(arr1, arr2): that adds two arrays element-wise:
+	- You can assume that arr1 and arr2 are lists of ints/floats
+	- You must return a new list
+	- If arr1 and arr2 are not the same shape, return None
