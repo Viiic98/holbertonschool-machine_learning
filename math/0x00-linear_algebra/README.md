@@ -41,3 +41,9 @@ To check that all have been successfully downloaded, use pip list.
 - Write a function def matrix_shape(matrix): that calculates the shape of a matrix:
 	- You can assume all elements in the same dimension are of the same type/shape
 	- The shape should be returned as a list of integers
+
+#### Flip Me Over [3-flip_me_over.py](3-flip_me_over.py)
+- Write a function def matrix_transpose(matrix): that returns the transpose of a 2D matrix, matrix:
+	- You must return a new matrix
+	- You can assume that matrix is never empty
+	- You can assume all elements in the same dimension are of the same type/shape
