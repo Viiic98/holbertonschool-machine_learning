@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ Concatenates two matrices along a specific axis """
-import copy
 cat_arrays = __import__('6-howdy_partner').cat_arrays
 
 
@@ -10,10 +9,12 @@ def cat_matrices2D(mat1, mat2, axis=0):
         Axis 1 = Row
     """
     matrix = []
+    mat1_copy = [row[:] for row in mat1[:]]
+    mat2_copy = [row[:] for row in mat2[:]]
     if axis == 0:
-        for axis in copy.deepcopy(mat1):
+        for axis in mat1_copy:
             matrix.append(axis)
-        for axis in copy.deepcopy(mat2):
+        for axis in mat2_copy:
             matrix.append(axis)
     else:
         for i, j in zip(mat1, mat2):
