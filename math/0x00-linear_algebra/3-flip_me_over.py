@@ -3,6 +3,7 @@ matrix_shape = __import__('2-size_me_please').matrix_shape
 
 
 def matrix_transpose(matrix):
+    """ Transpose a matrix """
     shape = matrix_shape(matrix)
     t_matrix = [[0]*shape[0] for _ in range(shape[1])]
     l = 0
