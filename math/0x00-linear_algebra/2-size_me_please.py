@@ -5,5 +5,8 @@ def matrix_shape(matrix):
     m = []
     while type(matrix) is list:
         m.append(len(matrix))
-        matrix = matrix[0]
+        if matrix[0]:
+            matrix = matrix[0]
+        else:
+            break
     return m
