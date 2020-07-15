@@ -17,6 +17,8 @@ def cat_matrices2D(mat1, mat2, axis=0):
         for axis in mat2_copy:
             matrix.append(axis)
     else:
-        for i, j in zip(mat1, mat2):
+        for i, j in zip(mat1_copy, mat2_copy):
             matrix.append(cat_arrays(i, j))
-    return matrix
+    if len(matrix):
+        return matrix
+    return None
