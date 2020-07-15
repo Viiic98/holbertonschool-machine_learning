@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Transpose a matrix """
 matrix_shape = __import__('2-size_me_please').matrix_shape
 
 
