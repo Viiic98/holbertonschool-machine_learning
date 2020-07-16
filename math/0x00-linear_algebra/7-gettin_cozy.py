@@ -8,6 +8,8 @@ def cat_matrices2D(mat1, mat2, axis=0):
         Axis 0 = Colum
         Axis 1 = Row
     """
+    if mat1 == [] or mat2 == []:
+        return None
     matrix = []
     mat1_copy = [row[:] for row in mat1[:]]
     mat2_copy = [row[:] for row in mat2[:]]
