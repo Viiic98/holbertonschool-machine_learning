@@ -114,3 +114,10 @@ To check that all have been successfully downloaded, use pip list.
 	- You are not allowed to use any loops or conditional statements
 	- You may use: import numpy as np
 	- You can assume that mat1 and mat2 are never empty
+
+#### Saddle Up
+- Function def np_matmul(mat1, mat2): that performs matrix multiplication:
+	- You can assume that mat1 and mat2 are numpy.ndarrays
+	- You are not allowed to use any loops or conditional statements
+	- You may use: import numpy as np
+	- You can assume that mat1 and mat2 are never empty
