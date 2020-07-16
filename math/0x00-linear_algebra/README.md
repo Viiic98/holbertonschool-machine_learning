@@ -80,7 +80,7 @@ To check that all have been successfully downloaded, use pip list.
 	- You must return a new matrix
 	- If the two matrices cannot be multiplied, return None
 
-#### Let The Butcher Slice It
+#### Let The Butcher Slice It [9-let_the_butcher_slice_it.py](9-let_the_butcher_slice_it.py)
 - Complete the following source code (found below)
 	- mat1 should be the middle two rows of matrix
 	- mat2 should be the middle two columns of matrix
@@ -88,8 +88,14 @@ To check that all have been successfully downloaded, use pip list.
 	- You are not allowed to use any loops or conditional statements
 	- Your program should be exactly 10 lines
 
-#### I’ll Use My Scale
+#### I’ll Use My Scale [10-ill_use_my_scale.py](10-ill_use_my_scale.py)
 - Function def np_shape(matrix): that calculates the shape of a numpy.ndarray
 	- You are not allowed to use any loops or conditional statements
 	- You are not allowed to use try/except statements
 	- The shape should be returned as a tuple of integers
+
+#### The Western Exchange [11-the_western_exchange.py](11-the_western_exchange.py)
+- Function def np_transpose(matrix): that transposes matrix
+	- You can assume that matrix can be interpreted as a numpy.ndarray
+	- You are not allowed to use any loops or conditional statements
+	- You must return a new numpy.ndarray
