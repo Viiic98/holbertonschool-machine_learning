@@ -87,3 +87,9 @@ To check that all have been successfully downloaded, use pip list.
 	- mat3 should be the bottom-right, square, 3x3 matrix of matrix
 	- You are not allowed to use any loops or conditional statements
 	- Your program should be exactly 10 lines
+
+#### I’ll Use My Scale
+- Function def np_shape(matrix): that calculates the shape of a numpy.ndarray
+	- You are not allowed to use any loops or conditional statements
+	- You are not allowed to use try/except statements
+	- The shape should be returned as a tuple of integers
