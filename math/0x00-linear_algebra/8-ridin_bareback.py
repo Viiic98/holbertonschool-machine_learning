@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """ Matrix multiplication """
 
+
 def mat_mul(mat1, mat2):
     """ Dot product
         This can be only applied if the number of columns
         of the first matrix are equal to the number of
         rows in the second matrix
     """
-    if mat1 == [] and mat2 == []:
+    if mat1 == [] or mat2 == []:
         return None
     if len(mat1[0]) != len(mat2):
         return None
