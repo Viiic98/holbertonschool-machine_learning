@@ -4,8 +4,8 @@
 
 def summation_i_squared(n):
     """ Recursive function """
+    if (type(n) != int and type(n) != float):
+        return None
     if (n < 0):
         return None
-    if (n >= 1):
-        return(summation_i_squared(n - 1) + n**2)
-    return (n**2)
+    return sum(map(lambda i : i*i, range(n + 1)))
