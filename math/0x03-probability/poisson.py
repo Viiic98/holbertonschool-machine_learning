@@ -28,7 +28,8 @@ class Poisson:
         """
         if type(k) is not int:
             k = int(k)
-
+        if k < 0:
+            return 0
         # Factorial
         fact = 1
         for i in range(1, k + 1):
@@ -36,3 +37,17 @@ class Poisson:
         pmf = (self.lambtha ** (k)) * (2.7182818285 ** (-self.lambtha))
         pmf = pmf / fact
         return pmf
+
+    def cdf(self, k):
+        """ Calculates the value of the CDF for a given number of “successes”
+
+            k is the number of “successes”
+        """
+        if type(k) is not int:
+            k = int(k)
+        if k < 0:
+            return 0
+        cdf = 0
+        for i in range(k + 1):
+            cdf += self.pmf(i)
+        return cdf
