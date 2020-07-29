@@ -10,6 +10,8 @@ class Poisson:
             data: list of the data to be used to estimate the distribution
             lambtha: expected number of occurences in a given time frame
         """
+        if lambtha <= 0:
+            raise ValueError("lambtha must be a positive value")
         self.lambtha = float(lambtha)
         if data:
             if type(data) is not list:
@@ -17,8 +19,6 @@ class Poisson:
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
             self.lambtha = sum(data) / len(data)
-        if self.lambtha <= 0:
-            raise ValueError("lambtha must be a positive value")
 
     def pmf(self, k):
         """ Calculates the value of the PMF for a given number of “successes”
