@@ -17,12 +17,15 @@ class Binomial():
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
-                self.n = int(len(data) / 2)
-                self.p = (sum(data) / self.n) / 100
+                mean = sum(data) / len(data)
+                variance = sum(((x - mean)**2) for x in data) / len(data)
+                p = 1 - (variance / mean)
+                self.n = round(mean / p)
+                self.p = float(mean / self.n)
         else:
-            if n < 0:
+            if n <= 0:
                 raise ValueError("n must be a positive value")
-            elif p < 0 and p > 1:
+            elif p <= 0 or p >= 1:
                 raise ValueError("p must be greater than 0 and less than 1")
             self.p = float(p)
             self.n = int(n)
