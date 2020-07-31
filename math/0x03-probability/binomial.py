@@ -23,7 +23,9 @@ class Binomial():
                 self.n = round(mean / p)
                 self.p = float(mean / self.n)
         else:
-            if n <= 0:
+            if type(data) is list and len(data) < 2:
+                raise ValueError("data must contain multiple values")
+            elif n <= 0:
                 raise ValueError("n must be a positive value")
             elif p <= 0 or p >= 1:
                 raise ValueError("p must be greater than 0 and less than 1")
