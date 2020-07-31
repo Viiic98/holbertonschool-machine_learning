@@ -20,7 +20,7 @@ class Poisson:
                 raise ValueError("data must contain multiple values")
             self.lambtha = sum(data) / len(data)
         else:
-            if len(data) < 2:
+            if type(data) is list and len(data) < 2:
                 raise ValueError("data must contain multiple values")
 
     def pmf(self, k):
