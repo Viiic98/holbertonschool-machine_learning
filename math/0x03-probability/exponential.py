@@ -31,6 +31,8 @@ class Exponential():
 
             PDF = lambtha * exponential ** (-lambtha * x)
         """
+        if x < 0:
+            return 0
         return self.lambtha * self.e**(-self.lambtha * x)
 
     def cdf(self, x):
@@ -38,4 +40,6 @@ class Exponential():
 
             CDF = 1 - exponential ** (-lambtha * x)
         """
+        if x < 0:
+            return 0
         return 1 - self.e**(-self.lambtha * x)
