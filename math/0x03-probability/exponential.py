@@ -18,10 +18,12 @@ class Exponential():
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
-                self.lambtha = (1 / sum(data)) * 100
+                self.lambtha = 1 / (sum(data) / len(data))
         else:
-            if lambtha < 0:
+            if lambtha <= 0:
                 raise ValueError("lambtha must be a positive value")
+            elif type(data) is list and len(data) < 2:
+                raise ValueError("data must contain multiple values")
             self.lambtha = float(lambtha)
 
     def pdf(self, x):
