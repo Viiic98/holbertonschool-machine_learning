@@ -27,9 +27,11 @@ class Normal():
                     n += (i - self.mean)**2
                 self.stddev = (n / len(data))**(1/2)
         else:
+            if type(data) is not list:
+                raise TypeError("data must be a list")
             if type(data) is list and len(data) < 2:
                 raise ValueError("data must contain multiple values")
-            if stddev < 0:
+            if stddev <= 0:
                 raise ValueError("stddev must be a positive value")
             self.mean = float(mean)
             self.stddev = float(stddev)
