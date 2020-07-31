@@ -62,9 +62,25 @@ class Normal():
     def cdf(self, x):
         """ Calculates the value of the CDF for a given x-value
 
-            CDF =
+            CDF = 1/2 * (1 + erf((x - mean) / (standard deviation * 2**(1/2))))
         """
-        cdf = 0
-        for i in range(x):
-            cdf += (self.e**((-i**2)/2))
-        return cdf
+        return (1/2) * (1 + self.erf((x - self.mean) /
+                        (self.stddev * (2**0.5))))
+
+    def erf(self, x):
+        """ Calculates Error function from 0 to 4
+
+            erf = ((-1 * n) * x**((2 * n) + 1)) /
+                    (factorial(n) * ((2 * n) + 1))
+        """
+        s = sum(((((-1)**n) * (x**((2*n) + 1))) /
+                (self.fact(n) * ((2 * n) + 1))
+                for n in range(5)))
+        return (2 / (self.pi**(1/2))) * s
+
+    def fact(self, x):
+        """ Factorial function """
+        fact = 1
+        for i in range(1, x + 1):
+            fact *= i
+        return fact
