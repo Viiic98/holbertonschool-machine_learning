@@ -8,3 +8,7 @@
 
 #### [Neuron](./0-neuron.py)
 - Class Neuron that defines a single neuron performing binary classification
+
+#### [Privatize Neuron](./1-neuron.py)
+- Class Neuron that defines a single neuron performing binary classification
+    - Private instance attributes
