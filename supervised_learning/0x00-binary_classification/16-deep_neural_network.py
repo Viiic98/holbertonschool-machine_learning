@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """ Deep neural network """
+
+
 import numpy as np
 
 
 class DeepNeuralNetwork():
     """ defines a deep neural network """
+
+
     def __init__(self, nx, layers):
         """ Class constructor
 
