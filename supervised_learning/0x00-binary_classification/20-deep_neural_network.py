@@ -79,6 +79,6 @@ class DeepNeuralNetwork():
     def evaluate(self, X, Y):
         """ Evaluates the neuron """
         self.forward_prop(X)
-        l = 'A' + str(self.__L)
-        A = self.__cache[l]
+        i = 'A' + str(self.__L)
+        A = self.__cache[i]
         return np.round(A).astype(int), self.cost(Y, A)
