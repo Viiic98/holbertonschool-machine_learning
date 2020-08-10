@@ -26,20 +26,20 @@ class DeepNeuralNetwork():
         self.__cache = {}
         self.__weights = {}
 
-        for l in range(self.L):
-            if type(layers[l]) is not int or layers[l] <= 0:
+        for i in range(self.L):
+            if type(layers[i]) is not int or layers[i] <= 0:
                 raise TypeError("layers must be a list of positive integers")
 
-            w = "W" + str(l + 1)
-            b = "b" + str(l + 1)
+            w = "W" + str(i + 1)
+            b = "b" + str(i + 1)
 
-            if l == 0:
-                self.weights[w] = np.random.randn(layers[l], nx)\
+            if i == 0:
+                self.weights[w] = np.random.randn(layers[i], nx)\
                                   * np.sqrt(2. / nx)
             else:
-                self.weights[w] = np.random.randn(layers[l], layers[l - 1])\
-                                  * np.sqrt(2 / layers[l - 1])
-            self.weights[b] = np.zeros((layers[l], 1))
+                self.weights[w] = np.random.randn(layers[i], layers[i - 1])\
+                                  * np.sqrt(2 / layers[i - 1])
+            self.weights[b] = np.zeros((layers[i], 1))
 
     @property
     def L(self):
@@ -61,11 +61,11 @@ class DeepNeuralNetwork():
             Sigmoid Forward propagation
         """
         self.__cache['A0'] = X
-        for l in range(self.L):
-            w = 'W' + str(l + 1)
-            b = 'b' + str(l + 1)
-            a = 'A' + str(l + 1)
-            Z = np.dot(self.__weights[w], self.__cache['A' + str(l)])\
+        for i in range(self.L):
+            w = 'W' + str(i + 1)
+            b = 'b' + str(i + 1)
+            a = 'A' + str(i + 1)
+            Z = np.dot(self.__weights[w], self.__cache['A' + str(i)])\
                 + self.__weights[b]
             self.__cache[a] = 1 / (1 + np.exp(-Z))
         return self.__cache[a], self.__cache
@@ -93,10 +93,10 @@ class DeepNeuralNetwork():
         """
         m = len(Y[0])
         dz = self.__cache['A' + str(self.__L)] - Y
-        for l in range(self.__L, 0, -1):
-            a = 'A' + str(l - 1)
-            w = 'W' + str(l)
-            b = 'b' + str(l)
+        for i in range(self.__L, 0, -1):
+            a = 'A' + str(i - 1)
+            w = 'W' + str(i)
+            b = 'b' + str(i)
             A = self.__cache[a]
             dw = (1 / m) * np.dot(dz, np.transpose(A))
             db = (1 / m) * np.sum(dz, axis=1, keepdims=True)
