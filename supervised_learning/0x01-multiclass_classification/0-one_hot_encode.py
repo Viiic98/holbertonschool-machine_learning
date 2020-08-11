@@ -16,6 +16,8 @@ def one_hot_encode(Y, classes):
         return None
     if len(Y) == 0:
         return None
+    if classes <= Y[np.argmax(Y)]:
+        return None
     x = np.zeros((classes, len(Y)))
     for i in range(classes):
         r = np.where(Y == i)
