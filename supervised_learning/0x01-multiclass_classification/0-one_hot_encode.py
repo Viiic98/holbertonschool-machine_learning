@@ -8,9 +8,13 @@ def one_hot_encode(Y, classes):
         @Y: numpy.ndarray with shape (m,) containing numeric class labels
         @classes: is the maximum number of classes found in Y
     """
-    if classes == 0:
+    if type(classes) is not int:
         return None
-    if Y is None:
+    if classes <= 0:
+        return None
+    if Y is None or type(Y) is not np.ndarray:
+        return None
+    if len(Y) == 0:
         return None
     x = np.zeros((classes, len(Y)))
     for i in range(classes):
