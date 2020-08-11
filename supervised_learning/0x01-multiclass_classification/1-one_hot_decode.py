@@ -20,4 +20,6 @@ def one_hot_decode(one_hot):
         for j in range(len(one_hot)):
             if one_hot[j][i] == 1:
                 Y.append(j)
+    if len(Y) == 0:
+        return None
     return np.array(Y)
