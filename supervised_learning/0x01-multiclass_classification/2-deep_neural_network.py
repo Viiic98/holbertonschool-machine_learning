@@ -151,16 +151,16 @@ class DeepNeuralNetwork():
         if len(filename.split('.')) == 1:
             filename += '.pkl'
         try:
-            fileObject = open(filename, 'wb')
-            pickle.dump(self, fileObject)
-            fileObject.close()
+            file_object = open(filename, 'wb')
+            pickle.dump(self, file_object)
+            file_object.close()
         except:
             return None
 
     def load(filename):
         """ Loads a pickled DeepNeuralNetwork object """
         try:
-            fileObject = open(filename, 'rb')
-            return pickle.load(fileObject)
+            file_object = open(filename, 'rb')
+            return pickle.load(file_object)
         except:
             return None
