@@ -15,11 +15,11 @@ def one_hot_decode(one_hot):
         return None
     if len(one_hot) == 0 or len(one_hot[0]) == 0:
         return None
+    if len(one_hot.shape) != 2:
+        return None
     Y = []
     for i in range(len(one_hot[0])):
         for j in range(len(one_hot)):
             if one_hot[j][i] == 1:
                 Y.append(j)
-    if len(Y) == 0:
-        return None
     return np.array(Y)
