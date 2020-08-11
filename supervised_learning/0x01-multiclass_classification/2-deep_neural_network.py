@@ -156,5 +156,8 @@ class DeepNeuralNetwork():
 
     def load(filename):
         """ Loads a pickled DeepNeuralNetwork object """
-        fileObject = open(filename, 'rb')
-        return pickle.load(fileObject)
+        try:
+            fileObject = open(filename, 'rb')
+            return pickle.load(fileObject)
+        except:
+            return None
