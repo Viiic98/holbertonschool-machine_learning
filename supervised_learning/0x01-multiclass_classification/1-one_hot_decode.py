@@ -13,7 +13,7 @@ def one_hot_decode(one_hot):
         return None
     if one_hot is None:
         return None
-    if len(one_hot) == 0 or len(one_hot[0]) == 0:
+    if len(one_hot) == 0:
         return None
     if len(one_hot.shape) != 2:
         return None
