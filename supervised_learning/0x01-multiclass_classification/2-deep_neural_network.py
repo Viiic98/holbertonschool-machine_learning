@@ -124,7 +124,7 @@ class DeepNeuralNetwork():
             raise ValueError("alpha must be positive")
         if type(step) is not int:
             raise TypeError("step must be an integer")
-        if step > iterations:
+        if step > iterations and iterations > 100:
             raise ValueError("step must be positive and <= iterations")
         it_x = []
         cost_y = []
