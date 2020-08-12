@@ -150,19 +150,12 @@ class DeepNeuralNetwork():
         """ Saves the instance object to a file in pickle format """
         if len(filename.split('.')) == 1:
             filename += '.pkl'
-        try:
-            file_object = open(filename, 'wb')
-            pickle.dump(self, file_object)
-            file_object.close()
-        except:
-            return None
+        with open(filename, 'wb') as f:
+            pickle.dump(self, f)
+            f.close()
 
     def load(filename):
         """ Loads a pickled DeepNeuralNetwork object """
-        try:
-            file_object = open(filename, 'rb')
-            a = pickle.load(file_object)
-            file_object.close()
+        with open(filename, 'rb') as f:
+            a = pickle.load(f)
             return a
-        except:
-            return None
