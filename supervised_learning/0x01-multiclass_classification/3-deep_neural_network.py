@@ -145,7 +145,8 @@ class DeepNeuralNetwork():
                 if graph is True:
                     it_x.append(i)
                     cost_y.append(cost)
-            self.gradient_descent(Y, self.__cache, alpha)
+            if i < iterations:
+                self.gradient_descent(Y, self.__cache, alpha)
         if graph is True:
             plt.plot(it_x, cost_y)
             plt.title("Training Cost")

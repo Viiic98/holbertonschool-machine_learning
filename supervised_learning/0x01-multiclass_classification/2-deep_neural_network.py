@@ -124,8 +124,9 @@ class DeepNeuralNetwork():
             raise ValueError("alpha must be positive")
         if type(step) is not int:
             raise TypeError("step must be an integer")
-        if step > iterations and iterations > 100:
-            raise ValueError("step must be positive and <= iterations")
+        if verbose is True or graph is True:
+            if step > iterations:
+                raise ValueError("step must be positive and <= iterations")
         it_x = []
         cost_y = []
         for i in range(iterations + 1):
@@ -138,7 +139,8 @@ class DeepNeuralNetwork():
                 if graph is True:
                     it_x.append(i)
                     cost_y.append(cost)
-            self.gradient_descent(Y, self.__cache, alpha)
+            if i < iterations:
+                self.gradient_descent(Y, self.__cache, alpha)
         if graph is True:
             plt.plot(it_x, cost_y)
             plt.title("Training Cost")
