@@ -161,7 +161,7 @@ class DeepNeuralNetwork():
             file_object = open(filename, 'wb')
             pickle.dump(self, file_object)
             file_object.close()
-        except:
+        except Exception as e:
             return None
 
     def load(filename):
@@ -171,5 +171,5 @@ class DeepNeuralNetwork():
             a = pickle.load(file_object)
             file_object.close()
             return a
-        except:
+        except Exception as e:
             return None
