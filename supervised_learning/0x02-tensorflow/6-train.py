@@ -29,22 +29,19 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     x, y = create_placeholders(len(X_train[0]), len(Y_train[0]))
     y_pred = forward_prop(x, layer_sizes, activations)
     # Training
-    cost_t = calculate_loss(y, y_pred)
-    accuracy_t = calculate_accuracy(y, y_pred)
-    # Validation
-    cost_v = calculate_loss(y, y_pred)
-    accuracy_v = calculate_accuracy(y, y_pred)
+    loss = calculate_loss(y, y_pred)
+    accuracy = calculate_accuracy(y, y_pred)
     # Training
-    train_op = create_train_op(cost_t, alpha)
+    train_op = create_train_op(loss, alpha)
     saver = tf.train.Saver()
     # TensorFlow Session
     with tf.Session() as sess:
         init = tf.global_variables_initializer()
         sess.run(init)
         for i in range(iterations + 1):
-            ct, at = sess.run([cost_t, accuracy_t],
+            ct, at = sess.run([loss, accuracy],
                               feed_dict={x: X_train, y: Y_train})
-            cv, av = sess.run([cost_v, accuracy_v],
+            cv, av = sess.run([loss, accuracy],
                               feed_dict={x: X_valid, y: Y_valid})
             sess.run(train_op, feed_dict={x: X_train, y: Y_train})
             if i % 100 == 0:
