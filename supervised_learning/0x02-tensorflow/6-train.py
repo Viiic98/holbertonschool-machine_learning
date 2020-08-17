@@ -50,11 +50,12 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
                               feed_dict={x: X_train, y: Y_train})
             cv, av = sess.run([loss, accuracy],
                               feed_dict={x: X_valid, y: Y_valid})
-            sess.run(train_op, feed_dict={x: X_train, y: Y_train})
             if i % 100 == 0:
                 print("After {} iterations: ".format(i))
                 print("\tTraining Cost: {}".format(ct))
                 print("\tTraining Accuracy: {}".format(at))
                 print("\tValidation Cost: {}".format(cv))
                 print("\tValidation Accuracy: {}".format(av))
-        return saver.save(sess, save_path)
+            if i == iterations:
+                return saver.save(sess, save_path)
+            sess.run(train_op, feed_dict={x: X_train, y: Y_train})
