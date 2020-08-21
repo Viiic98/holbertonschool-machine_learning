@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""""""
+""" Standard normalization """
+
 
 def normalize(X, m, s):
     """ normalizes (standardizes) a matrix
