@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""""""
+""" Gradient descent with momentum """
 
 
 def update_variables_momentum(alpha, beta1, var, grad, v):
@@ -17,7 +17,9 @@ def update_variables_momentum(alpha, beta1, var, grad, v):
 
         Formula:
             vdw or vdb = beta * (vdw or vdb) + 1 - beta * (dw or db)
+            Updates W or b by using:
+                W or b = (W or b) - (alpha * (vdw or vdb))
     """
     vd = (beta1 * v) + ((1 - beta1) * grad)
-    x = var - (alpha * v)
+    x = var - (alpha * vd)
     return x, vd
