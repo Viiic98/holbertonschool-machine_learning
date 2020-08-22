@@ -65,7 +65,6 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
         accuracy = tf.get_collection('accuracy')[0]
         loss = tf.get_collection('loss')[0]
         train_op = tf.get_collection('train_op')[0]
-
         num_mini_batches = int(len(X_train) / batch_size)
         for epoch in range(epochs + 1):
             X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
@@ -93,3 +92,9 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
                                        feed_dict_train, feed_dict_train)
                         pr_gradient(step, valid_cost, valid_accuracy)
                     i += batch_size
+        x = tf.add_to_collection('x', x)
+        y = tf.add_to_collection('y', y)
+        accuracy = tf.add_to_collection('accuracy', accuracy)
+        loss = tf.add_to_collection('loss', loss)
+        train_op = tf.add_to_collection('train_op', train_op)
+        return saver.save(sess, save_path)
