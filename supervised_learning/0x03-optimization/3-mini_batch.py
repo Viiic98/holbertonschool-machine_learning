@@ -66,10 +66,9 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
         loss = tf.get_collection('loss')[0]
         train_op = tf.get_collection('train_op')[0]
         num_mini_batches = int(len(X_train) / batch_size)
-        for epoch in range(epochs + 1):
-            X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
 
-            feed_dict_train = {x: X_shuffled, y: Y_shuffled}
+        for epoch in range(epochs + 1):
+            feed_dict_train = {x: X_train, y: Y_train}
             feed_dict_valid = {x: X_valid, y: Y_valid}
 
             train_cost, train_accuracy, valid_cost, valid_accuracy = \
@@ -80,6 +79,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
                   valid_cost, valid_accuracy)
 
             if epoch < epochs:
+                X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
                 i = 0
                 for step in range(1, num_mini_batches):
                     x_mini = X_shuffled[i: i + batch_size, :]
