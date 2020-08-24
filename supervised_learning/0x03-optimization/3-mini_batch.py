@@ -84,8 +84,8 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
                 step = 1
                 while i < X_shuffled.shape[0]:
                     if i + batch_size > X_shuffled.shape[0]:
-                        x_mini = X_shuffled[i: X_shuffled.shape[0]]
-                        y_mini = Y_shuffled[i: X_shuffled.shape[0]]
+                        x_mini = X_shuffled[i:]
+                        y_mini = Y_shuffled[i:]
                     else:
                         x_mini = X_shuffled[i: i + batch_size]
                         y_mini = Y_shuffled[i: i + batch_size]
@@ -100,9 +100,5 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
                         break
                     i += batch_size
                     step += 1
-        x = tf.add_to_collection('x', x)
-        y = tf.add_to_collection('y', y)
-        accuracy = tf.add_to_collection('accuracy', accuracy)
-        loss = tf.add_to_collection('loss', loss)
-        train_op = tf.add_to_collection('train_op', train_op)
+
         return saver.save(sess, save_path)
