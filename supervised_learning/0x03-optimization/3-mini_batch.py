@@ -81,14 +81,9 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
 
             if epoch < epochs:
                 i = 0
-                step = 1
-                while i < X_shuffled.shape[0]:
-                    if i + batch_size > X_shuffled.shape[0]:
-                        x_mini = X_shuffled[i:]
-                        y_mini = Y_shuffled[i:]
-                    else:
-                        x_mini = X_shuffled[i: i + batch_size]
-                        y_mini = Y_shuffled[i: i + batch_size]
+                for step in range(1, num_mini_batches):
+                    x_mini = X_shuffled[i: i + batch_size, :]
+                    y_mini = Y_shuffled[i: i + batch_size, :]
                     feed_dict_train = {x: x_mini, y: y_mini}
                     sess.run(train_op, feed_dict_train)
                     if step % 100 == 0:
@@ -96,9 +91,10 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid,
                             calculates(sess, loss, accuracy,
                                        feed_dict_train, feed_dict_train)
                         pr_gradient(step, valid_cost, valid_accuracy)
-                    if i + batch_size > X_shuffled.shape[0]:
-                        break
                     i += batch_size
-                    step += 1
-
+        x = tf.add_to_collection('x', x)
+        y = tf.add_to_collection('y', y)
+        accuracy = tf.add_to_collection('accuracy', accuracy)
+        loss = tf.add_to_collection('loss', loss)
+        train_op = tf.add_to_collection('train_op', train_op)
         return saver.save(sess, save_path)
