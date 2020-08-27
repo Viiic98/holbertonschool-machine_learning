@@ -19,5 +19,5 @@ def precision(confusion):
     for i in range(confusion.shape[0]):
         tp = confusion[i][i]
         fp = np.sum(confusion, axis=0) - tp
-        prec[i] = tp / (tp + fn[i])
+        prec[i] = tp / (tp + fp[i])
     return prec
