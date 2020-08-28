@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Layer with tensorflow including L2 regularization """
 import tensorflow as tf
 
 
