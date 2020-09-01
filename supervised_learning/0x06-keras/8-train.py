@@ -48,8 +48,11 @@ def train_model(network, data, labels, batch_size, epochs,
         @filepath: is the file path where the model should be saved
         Returns: the History object generated after training the model
     """
-    call_backs = [K.callbacks.ModelCheckpoint(filepath, monitor='val_loss',
-                                              save_best_only=True)]
+    if filepath:
+        call_backs = [K.callbacks.ModelCheckpoint(filepath, monitor='val_loss',
+                                                  save_best_only=True)]
+    else:
+        call_backs = []
     if validation_data:
         if early_stopping or learning_rate_decay:
             if early_stopping:
