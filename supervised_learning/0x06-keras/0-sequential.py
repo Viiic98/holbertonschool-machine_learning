@@ -17,7 +17,6 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
         You are not allowed to use the Input class
         Returns: the keras model
     """
-    print(keep_prob)
     model = K.Sequential()
     for i in range(len(layers)):
         model.add(K.layers.Dense(layers[i],
