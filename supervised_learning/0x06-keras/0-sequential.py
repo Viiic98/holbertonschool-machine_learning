@@ -24,5 +24,5 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
                   input_shape=(nx,),
                   kernel_regularizer=K.regularizers.l2(lambtha)))
         if i + 1 < len(layers):
-            model.add(K.layers.Dropout(keep_prob, input_shape=(nx,)))
+            model.add(K.layers.Dropout(keep_prob))
     return model
