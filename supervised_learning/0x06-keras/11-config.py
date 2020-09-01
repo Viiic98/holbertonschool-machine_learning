@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""""""
+""" Save and load from json format """
 import tensorflow.keras as K
 
 
