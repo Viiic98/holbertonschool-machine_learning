@@ -26,7 +26,7 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
                                    input_shape=(nx,),
                                    kernel_regularizer=K.regularizers.l2(
                                                         lambtha))(inp)
-            dropout = (K.layers.Dropout(keep_prob))(layer)
+            dropout = (K.layers.Dropout(1 - keep_prob))(layer)
             outputs.append(layer)
             outputs.append(dropout)
             inp = dropout
