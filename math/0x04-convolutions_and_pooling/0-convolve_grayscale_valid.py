@@ -19,10 +19,17 @@ def convolve_grayscale_valid(images, kernel):
         loops of any kind are not allowed
         Returns: a numpy.ndarray containing the convolved images
     """
+    # Input dimensions
     m = images.shape[0]
-    h = images.shape[1]
-    w = images.shape[2]
-    new_img = np.ndarray((m, h - 2, w - 2))
+    ih = images.shape[1]
+    iw = images.shape[2]
+    # Kernel dimension
+    kh = kernel.shape[0]
+    kw = kernel.shape[1]
+    # Output image dimensions
+    nh = (ih - kh) + 1
+    nw = (iw - kw) + 1
+    new_img = np.ndarray((m, nh, nw))
     op_kernel = np.ndarray(kernel.shape)
     for n in range(m):
         x = y = 0
