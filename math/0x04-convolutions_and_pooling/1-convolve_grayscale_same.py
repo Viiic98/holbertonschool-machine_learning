@@ -20,12 +20,15 @@ def convolve_grayscale_same(images, kernel):
         loops of any kind are not allowed
         Returns: a numpy.ndarray containing the convolved images
     """
+    # Input dimensions
     m = images.shape[0]
-    h = images.shape[1]
-    w = images.shape[2]
-    new_img = np.ndarray((m, h, w))
-    op_kernel = np.ndarray(kernel.shape)
-    for n in range(m):
+    ih = images.shape[1]
+    iw = images.shape[2]
+    # Kernel dimension
+    kh = kernel.shape[0]
+    kw = kernel.shape[1]
+    new_img = np.zeros((m, ih, iw))
+    """for n in range(m):
         x = y = 0
         img = np.pad(images[n], 1, 'constant')
         while y < img.shape[0] - 2:
@@ -35,5 +38,15 @@ def convolve_grayscale_same(images, kernel):
                 x = 0
                 y += 1
             else:
-                x += 1
+                x += 1"""
+    pad_images = np.pad(images, ((0,), (1,), (1,)), 'constant')
+    x = y = 0
+    while y < ih:
+        op_kernel = pad_images[:, y:y+kh, x:x+kw] * kernel
+        new_img[:, y, x] = np.sum(np.sum(op_kernel, axis=1), axis=1)
+        if x + 1 == iw:
+            x = 0
+            y += 1
+        else:
+            x += 1
     return new_img
