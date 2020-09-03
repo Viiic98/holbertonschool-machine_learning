@@ -26,12 +26,13 @@ def convolve_grayscale_valid(images, kernel):
     op_kernel = np.ndarray(kernel.shape)
     for n in range(m):
         x = y = 0
-        while (x and y) < h - 2:
-            op_kernel = np.sum(images[n][x:x+3, y:y+3] * kernel)
-            new_img[n][x][y] = op_kernel
-            if x + 1 == h - 2:
+        img = images[n]
+        while y < img.shape[0] - 2:
+            op_kernel = np.sum(img[y:y+3, x:x+3] * kernel)
+            new_img[n][y][x] = op_kernel
+            if x + 1 == img.shape[0] - 2:
+                x = 0
                 y += 1
-                if y < 26:
-                    x = 0
-            x += 1
+            else:
+                x += 1
     return new_img
