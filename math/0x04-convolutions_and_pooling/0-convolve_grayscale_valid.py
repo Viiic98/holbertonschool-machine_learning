@@ -29,7 +29,7 @@ def convolve_grayscale_valid(images, kernel):
     # Output image dimensions
     nh = (ih - kh) + 1
     nw = (iw - kw) + 1
-    new_img = np.ndarray((m, nh, nw))
+    new_img = np.zeros((m, nh, nw))
     op_kernel = np.ndarray(kernel.shape)
     for n in range(m):
         x = y = 0
