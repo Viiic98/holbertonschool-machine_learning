@@ -31,8 +31,8 @@ def convolve_grayscale_same(images, kernel):
     ph = int(kh / 2)
     pw = int(kw / 2)
     # Output dimensions
-    nh = ih + 2 * ph - (kh - 1)
-    nw = iw + 2 * pw - (kw - 1)
+    nh = ih
+    nw = iw
     new_img = np.ndarray((m, nh, nw))
     # Padding all images
     pad_images = np.pad(images, ((0,), (ph,), (pw,)), 'constant')
