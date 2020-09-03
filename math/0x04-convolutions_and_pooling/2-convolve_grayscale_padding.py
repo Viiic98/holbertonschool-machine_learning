@@ -38,16 +38,14 @@ def convolve_grayscale_padding(images, kernel, padding):
     nh = (ih - kh) + (2 * ph) + 1
     nw = (iw - kw) + (2 * pw) + 1
     new_img = np.ndarray((m, nh, nw))
-    op_kernel = np.ndarray(kernel.shape)
-    for n in range(m):
-        x = y = 0
-        img = np.pad(images[n], ((ph,), (pw,)), 'constant')
-        while y < img.shape[0] - 2:
-            op_kernel = np.sum(img[y:y+3, x:x+3] * kernel)
-            new_img[n][y][x] = op_kernel
-            if x + 1 == img.shape[0] - 2:
-                x = 0
-                y += 1
-            else:
-                x += 1
+    pad_images = np.pad(images, ((0,), (ph,), (pw,)), 'constant')
+    x = y = 0
+    while y < nh:
+        op_kernel = pad_images[:, y:y+kh, x:x+kw] * kernel
+        new_img[:, y, x] = np.sum(np.sum(op_kernel, axis=1), axis=1)
+        if x + 1 == nw:
+            x = 0
+            y += 1
+        else:
+            x += 1
     return new_img
