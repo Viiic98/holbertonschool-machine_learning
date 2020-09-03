@@ -35,7 +35,7 @@ def convolve_grayscale_valid(images, kernel):
         x = y = 0
         img = images[n]
         while y < img.shape[0] - 2:
-            op_kernel = np.sum(img[y:y+3, x:x+3] * kernel)
+            op_kernel = np.sum(img[y:y+kh, x:x+kw] * kernel)
             new_img[n][y][x] = op_kernel
             if x + 1 == img.shape[0] - 2:
                 x = 0
