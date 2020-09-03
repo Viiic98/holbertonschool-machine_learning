@@ -30,16 +30,13 @@ def convolve_grayscale_valid(images, kernel):
     nh = (ih - kh) + 1
     nw = (iw - kw) + 1
     new_img = np.zeros((m, nh, nw))
-    op_kernel = np.ndarray(kernel.shape)
-    for n in range(m):
-        x = y = 0
-        img = images[n]
-        while y < img.shape[0] - 2:
-            op_kernel = np.sum(img[y:y+kh, x:x+kw] * kernel)
-            new_img[n][y][x] = op_kernel
-            if x + 1 == img.shape[0] - 2:
-                x = 0
-                y += 1
-            else:
-                x += 1
+    x = y = 0
+    while y < nh:
+        op_kernel = images[:, y:y+kh, x:x+kw] * kernel
+        new_img[:, y, x] = np.sum(np.sum(op_kernel, axis=1), axis=1)
+        if x + 1 == nw:
+            x = 0
+            y += 1
+        else:
+            x += 1
     return new_img
