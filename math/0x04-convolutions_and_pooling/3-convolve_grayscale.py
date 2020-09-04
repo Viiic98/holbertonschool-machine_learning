@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """ Convlution with stride """
 import numpy as np
-convolve_grayscale_same = __import__('1-convolve_grayscale_same').\
-                          convolve_grayscale_same
-convolve_grayscale_padding = __import__('2-convolve_grayscale_padding').\
-                          convolve_grayscale_padding
 
 
 def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
@@ -44,9 +40,15 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     sh = stride[0]
     sw = stride[1]
     if type(padding) == tuple:
-        return convolve_grayscale_padding(images, kernel, padding)
+        ph = padding[0]
+        pw = padding[1]
+        nh = (ih - kh) + (2 * ph) + 1
+        nw = (iw - kw) + (2 * pw) + 1
     elif padding == 'same':
-        return convolve_grayscale_same(images, kernel)
+        ph = int(kh / 2)
+        pw = int(kw / 2)
+        nh = ih
+        nw = iw
     elif padding == 'valid':
         ph = 0
         pw = 0
@@ -56,7 +58,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     pad_images = np.pad(images, ((0,), (ph,), (pw,)), 'constant')
     x = y = 0
     i = j = 0
-    while j < nw:
+    while j < nh:
         op_kernel = pad_images[:, y:y+kh, x:x+kw] * kernel
         new_img[:, j, i] = np.sum(np.sum(op_kernel, axis=1), axis=1)
         if (x + sh) + kh >= iw:
