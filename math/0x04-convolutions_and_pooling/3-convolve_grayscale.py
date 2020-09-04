@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Convlution with stride """
 import numpy as np
+from math import ceil, floor
 
 
 def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
@@ -45,10 +46,10 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         nh = int(((ih - kh) + (2 * ph) + 1) / sh)
         nw = int(((iw - kw) + (2 * pw) + 1) / sw)
     elif padding == 'same':
-        ph = int(kh / 2)
-        pw = int(kw / 2)
-        nh = ih
-        nw = iw
+        nh = ceil(float(ih) / float(sh))
+        nw = ceil(float(iw) / float(sw))
+        ph = max((nh - 1) * sh + kh - ih, 0)
+        pw = max((nw - 1) * sw + kw - iw, 0)
         sh = 1
         sw = 1
     elif padding == 'valid':
