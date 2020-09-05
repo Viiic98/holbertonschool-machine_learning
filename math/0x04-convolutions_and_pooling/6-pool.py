@@ -37,8 +37,8 @@ def pool(images, kernel_shape, stride, mode='max'):
     # Stride dimensions
     sh = stride[0]
     sw = stride[1]
-    nh = int(ih / kh)
-    nw = int(iw / kw)
+    nh = int(((ih - kh) / sh)) + 1
+    nw = int(((iw - kw) / sw)) + 1
     new_img = np.zeros((m, nh, nw, c))
     x = y = 0
     i = j = 0
