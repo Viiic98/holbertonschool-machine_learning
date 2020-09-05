@@ -39,7 +39,7 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
     # Kernel dimensions
     kh = kernels.shape[0]
     kw = kernels.shape[1]
-    nc = kernels.shape[2]
+    nc = kernels.shape[3]
     # Stride dimensions
     sh = stride[0]
     sw = stride[1]
