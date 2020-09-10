@@ -67,9 +67,9 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
             for w in range(w_new):
                 for c in range(c_new):
                     # Variables to define slice size
-                    h_start = h
+                    h_start = h * sh
                     h_end = h_start + kh
-                    w_start = w
+                    w_start = w * sw
                     w_end = w_start + kw
 
                     # Slice a_prev_pad
@@ -82,8 +82,10 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                     dW[:, :, :, c] += a_slice * dZ[i, h, w, c]
                     db[:, :, :, c] += dZ[i, h, w, c]
 
-        # Unpad dA
-        if padding == 'same':
-            dA_prev[:, :, :, :] += da_prev_pad[ph:-ph, pw:-pw, :]
+    # Unpad dA
+    if padding == 'same':
+        dA_prev[:, :, :, :] += da_prev_pad[ph:-ph, pw:-pw, :]
+    if padding == 'valid':
+        dA_prev[:, :, :, :] += da_prev_pad
 
     return dA_prev, dW, db
