@@ -68,16 +68,16 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                 for c in range(c_new):
                     # Variables to define slice size
                     h_start = h
-                    h_end = vert_start + kh
+                    h_end = h_start + kh
                     w_start = w
-                    w_end = horiz_start + kw
+                    w_end = w_start + kw
 
                     # Slice a_prev_pad
                     a_slice = a_prev_pad[h_start:h_end, w_start:w_end, :]
 
                     # Update gradients for the window and the filter's
-                    da_prev_pad[vert_start:vert_end,
-                                horiz_start:horiz_end, :] += \
+                    da_prev_pad[h_start:h_end,
+                                w_start:w_end, :] += \
                         W[:, :, :, c] * dZ[i, h, w, c]
                     dW[:, :, :, c] += a_slice * dZ[i, h, w, c]
                     db[:, :, :, c] += dZ[i, h, w, c]
