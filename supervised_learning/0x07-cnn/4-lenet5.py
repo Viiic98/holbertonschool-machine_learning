@@ -64,7 +64,7 @@ def lenet5(x, y):
           filters=16,
           kernel_size=5,
           kernel_initializer=kernel_init,
-          padding="same",
+          padding="valid",
           activation=tf.nn.relu)
 
     # Pooling Layer #2
@@ -88,22 +88,24 @@ def lenet5(x, y):
 
     # Output layer, 10 neurons for each digit
     logits = tf.layers.dense(inputs=dense2, units=10,
-                             kernel_initializer=kernel_init,
-                             activation=tf.nn.relu)
+                             kernel_initializer=kernel_init)
 
     # Softmax function
     softmax = tf.nn.softmax(logits)
 
     # Compute the cross-entropy loss function
-    loss = tf.losses.softmax_cross_entropy(y, logits)
+    # loss = tf.losses.softmax_cross_entropy(y, softmax)
+    cost = tf.reduce_mean(
+           tf.nn.softmax_cross_entropy_with_logits_v2(logits=logits,
+                                                      labels=y))
 
     # Training operation with Adam Optimization
     optimizer = tf.train.AdamOptimizer()
-    train_op = optimizer.minimize(loss)
+    train_op = optimizer.minimize(cost)
 
     # For testing and prediction
     predictions = tf.argmax(softmax, axis=1)
     correct_prediction = tf.equal(tf.argmax(y, 1), predictions)
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-    return softmax, train_op, loss, accuracy
+    return softmax, train_op, cost, accuracy
