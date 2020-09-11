@@ -40,8 +40,8 @@ def conv_forward(A_prev, W, b, activation, padding="same",
     sw = stride[1]
     # Set padding
     if padding == 'same':
-        ph = int((((h_prev - 1) * sh - h_prev + kh) / 2)) + 1
-        pw = int((((w_prev - 1) * sw - w_prev + kw) / 2)) + 1
+        ph = int((((h_prev - 1) * sh - h_prev + kh) / 2))
+        pw = int((((w_prev - 1) * sw - w_prev + kw) / 2))
     elif padding == 'valid':
         ph = 0
         pw = 0
@@ -49,16 +49,16 @@ def conv_forward(A_prev, W, b, activation, padding="same",
     # Output dimensions
     nh = int(((h_prev + (2 * ph) - kh) / sh)) + 1
     nw = int(((w_prev + (2 * pw) - kw) / sw)) + 1
-    pad = ((0, 0), (ph, ph), (pw, pw), (0, 0))
-    pad_images = np.pad(A_prev, pad_width=pad, mode='constant')
+
+    pad_images = np.pad(A_prev, ((0,), (ph,), (pw,), (0,)), 'constant')
     new_img = np.zeros((m, nh, nw, c_new))
     x = y = 0
     i = j = 0
     while j < nh:
         k = 0
         while k < c_new:
-            op_filter = np.multiply(pad_images[:, y:y+kh, x:x+kw, :],
-                                    W[:, :, :, k])
+            op_filter = (pad_images[:, y:y+kh, x:x+kw, :]
+                         * W[:, :, :, k])
             new_img[:, j, i, k] = op_filter.sum(axis=(1, 2, 3))
             k += 1
         if i + 1 >= nw:
