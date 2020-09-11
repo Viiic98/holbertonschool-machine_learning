@@ -57,8 +57,8 @@ def conv_forward(A_prev, W, b, activation, padding="same",
     while j < nh:
         k = 0
         while k < c_new:
-            op_filter = (pad_images[:, y:y+kh, x:x+kw, :]
-                         * W[:, :, :, k])
+            op_filter = np.multiply(pad_images[:, y:y+kh, x:x+kw, :],
+                                    W[:, :, :, k])
             new_img[:, j, i, k] = op_filter.sum(axis=(1, 2, 3))
             k += 1
         if i + 1 >= nw:
