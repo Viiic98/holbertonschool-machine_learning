@@ -41,12 +41,9 @@ def lenet5(x, y):
     # Kernel initializer
     kernel_init = tf.contrib.layers.variance_scaling_initializer()
 
-    # Padding the input to make it 32x32. Specification of LeNET
-    padded_input = tf.pad(x, [[0, 0], [2, 2], [2, 2], [0, 0]], "CONSTANT")
-
     # Convolutional layer #1
     conv1 = tf.layers.conv2d(
-            inputs=padded_input,
+            inputs=x,
             filters=6,
             kernel_size=5,
             kernel_initializer=kernel_init,
