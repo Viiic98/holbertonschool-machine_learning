@@ -7,12 +7,12 @@ inception_block = __import__('0-inception_block').inception_block
 def inception_network():
     """ builds the inception network
 
-    - You can assume the input data will have shape (224, 224, 3)
-    - All convolutions inside and outside the inception block
-    should use a rectified linear activation (ReLU)
-    - You may use:
-    inception_block = __import__('0-inception_block').inception_block
-    Returns: the keras model
+        - You can assume the input data will have shape (224, 224, 3)
+        - All convolutions inside and outside the inception block
+          should use a rectified linear activation (ReLU)
+        - You may use:
+        inception_block = __import__('0-inception_block').inception_block
+        Returns: the keras model
     """
     # Input Layer
     X = K.Input(shape=(224, 224, 3))
