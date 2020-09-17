@@ -17,7 +17,7 @@ def transition_layer(X, nb_filters, compression):
     filters within the output, respectively
     """
     init = K.initializers.he_normal()
-    batch = K.layers.BatchNormalization()(X)
+    batch = K.layers.BatchNormalization(axis=3)(X)
     act = K.layers.Activation(K.activations.relu)(batch)
     conv = K.layers.Conv2D(int(nb_filters * compression), (1, 1),
                            padding='same',
