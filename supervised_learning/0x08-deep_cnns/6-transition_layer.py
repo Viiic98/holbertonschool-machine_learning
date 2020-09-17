@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Transition layer with Keras """
 import tensorflow.keras as K
 
 

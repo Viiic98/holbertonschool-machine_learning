@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Projection block with Keras """
 import tensorflow.keras as K
 
 
