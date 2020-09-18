@@ -60,8 +60,7 @@ def inception_network():
     inception = inception_block(inception, [384, 192, 384, 48, 128, 128])
     # Average pooling
     avg_pool = K.layers.AveragePooling2D(pool_size=(7, 7),
-                                         strides=1,
-                                         padding="same")(inception)
+                                         strides=1)(inception)
     # Dropout layer
     drop = K.layers.Dropout(0.4)(avg_pool)
     # Linear activation
