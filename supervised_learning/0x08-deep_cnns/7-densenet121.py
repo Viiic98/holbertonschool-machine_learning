@@ -43,9 +43,9 @@ def densenet121(growth_rate=32, compression=1.0):
     # Dense_block_4
     dense, nb_filters = dense_block(trans_layer, nb_filters, growth_rate, 16)
     # Global avarage
-    global_avg = K.layers.GlobalAveragePooling2D()(dense)
+    avg_pool = K.layers.AveragePooling2D((7, 7))(dense)
     # Dense layer with softmax
-    softmax = K.layers.Dense(1000, activation='softmax')(global_avg)
+    softmax = K.layers.Dense(1000, activation='softmax')(avg_pool)
     # Dense Model
     dense_net = K.models.Model(inputs=X, outputs=softmax)
     return dense_net
