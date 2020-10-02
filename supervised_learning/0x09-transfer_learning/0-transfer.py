@@ -74,4 +74,3 @@ K.learning_phase = K.backend.learning_phase
 X_train, Y_train = preprocess_data(X_train, Y_train)
 X_valid, Y_valid = preprocess_data(X_valid, Y_valid)
 transfer_model(X_train, Y_train, X_valid, Y_valid)
-model = K.models.load_model('cifar10.h5')
