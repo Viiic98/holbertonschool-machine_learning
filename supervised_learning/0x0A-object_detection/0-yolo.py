@@ -4,6 +4,7 @@ import tensorflow.keras as K
 
 
 class Yolo:
+    """ YOLO Class """
     def __init__(self, model_path, classes_path, class_t, nms_t, anchors):
         """ Constructor
 
