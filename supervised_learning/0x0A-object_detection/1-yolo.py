@@ -71,8 +71,8 @@ class Yolo:
         height, width = image_size
         i = 0
         for output in outputs:
-            grid_height = output.shape[0]
-            grid_width = output.shape[1]
+            grid_height = output.shape[1]
+            grid_width = output.shape[0]
             anchors = self.anchors[i]
             box = output[:, :, :, :4]
             for cx in range(len(output)):
