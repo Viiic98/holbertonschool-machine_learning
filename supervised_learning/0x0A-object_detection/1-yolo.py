@@ -68,7 +68,7 @@ class Yolo:
         boxes = []
         box_confidences = []
         box_class_probs = []
-        height, width = image_size
+        width, height = image_size
         i = 0
         for output in outputs:
             grid_height = output.shape[0]
@@ -88,9 +88,9 @@ class Yolo:
                         by = sigmoid(ty) + cy
                         by = by / grid_height
                         bw = pw * np.exp(tw)
-                        bw = bw / self.model.input.shape[2].value
+                        bw = bw / self.model.input.shape[1].value
                         bh = ph * np.exp(th)
-                        bh = bh / self.model.input.shape[1].value
+                        bh = bh / self.model.input.shape[2].value
                         x1 = (bx - bw / 2) * width
                         y1 = (by - bh / 2) * height
                         x2 = (bx + bw / 2) * width
