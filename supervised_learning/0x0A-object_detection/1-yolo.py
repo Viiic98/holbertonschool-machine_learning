@@ -88,9 +88,9 @@ class Yolo:
                         by = sigmoid(ty) + cy
                         by = by / grid_height
                         bw = pw * np.exp(tw)
-                        bw = bw / self.model.input.shape[1].value
+                        bw = bw / self.model.input.shape[2].value
                         bh = ph * np.exp(th)
-                        bh = bh / self.model.input.shape[2].value
+                        bh = bh / self.model.input.shape[1].value
                         x1 = (bx - bw / 2) * width
                         y1 = (by - bh / 2) * height
                         x2 = (bx + bw / 2) * width
@@ -100,4 +100,5 @@ class Yolo:
             boxes.append(box)
             box_confidences.append(sigmoid(output[:, :, :, 4:5]))
             box_class_probs.append(sigmoid(output[:, :, :, 5:]))
+        print(boxes[2].shape)
         return boxes, box_confidences, box_class_probs
