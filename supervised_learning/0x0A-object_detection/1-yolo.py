@@ -71,8 +71,8 @@ class Yolo:
         height, width = image_size
         i = 0
         for output in outputs:
-            grid_height = output.shape[1]
-            grid_width = output.shape[0]
+            grid_height = output.shape[0]
+            grid_width = output.shape[1]
             anchors = self.anchors[i]
             box = output[:, :, :, :4]
             for cx in range(len(output)):
@@ -93,8 +93,8 @@ class Yolo:
                         bh = bh / self.model.input.shape[2].value
                         x1 = (bx - bw / 2) * width
                         y1 = (by - bh / 2) * height
-                        x2 = (bx + bw / 2) * width
-                        y2 = (by + bh / 2) * height
+                        x2 = (x1 + bw) * width
+                        y2 = (y1 + bh) * height
                         box[cx, cy, anchor, :] = x1, y1, x2, y2
             i += 1
             boxes.append(box)
