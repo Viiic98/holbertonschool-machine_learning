@@ -142,7 +142,7 @@ class Yolo:
                   the original height and width of the images
                     - 2 => (image_height, image_width)
         """
-        image_shapes = np.zeros((len(images), 2))
+        image_shapes = []
         width = self.model.input_shape[1]
         height = self.model.input_shape[2]
         dim = (width, height)
@@ -151,7 +151,7 @@ class Yolo:
         for img in images:
             org_width = img.shape[0]
             org_height = img.shape[1]
-            image_shapes[i] = org_width, org_height
+            image_shapes.append((org_width, org_height))
             resize = cv2.resize(img, dim, interpolation=cv2.INTER_CUBIC)
             pimages.append(resize / 255)
             i += 1
