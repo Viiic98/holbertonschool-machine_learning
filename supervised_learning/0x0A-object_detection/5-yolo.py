@@ -148,12 +148,11 @@ class Yolo:
         for img in images:
             org_width = img.shape[0]
             org_height = img.shape[1]
-            image_shapes[i] = org_width, org_height
+            image_shapes[i] = org_height, org_width
             width = self.model.input_shape[1]
             height = self.model.input_shape[2]
-            dim = (width, height)
+            dim = (height, width)
             resize = cv2.resize(img, dim, interpolation=cv2.INTER_CUBIC)
-            blur = cv2.GaussianBlur(resize, (5, 5), 0)
-            pimages.append(blur)
+            pimages.append(resize)
             i += 1
         return np.array(pimages), image_shapes
