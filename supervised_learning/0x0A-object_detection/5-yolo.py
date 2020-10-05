@@ -153,6 +153,7 @@ class Yolo:
             height = self.model.input_shape[2]
             dim = (width, height)
             resize = cv2.resize(img, dim, interpolation=cv2.INTER_CUBIC)
-            pimages.append(resize)
+            blur = cv2.GaussianBlur(resize, (5, 5), 0)
+            pimages.append(blur)
             i += 1
         return np.array(pimages), image_shapes
