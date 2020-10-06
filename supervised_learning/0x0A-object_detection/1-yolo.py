@@ -70,6 +70,31 @@ class Yolo:
         box_class_probs = []
         height, width = image_size
         i = 0
+        """for output in outputs:
+            grid_height = output.shape[0]
+            grid_width = output.shape[1]
+            n_anchors = self.anchors.shape[1]
+            pw = self.anchors[i, :, 0]
+            ph = self.anchors[i, :, 1]
+            tx = output[:, :, :, 0]
+            ty = output[:, :, :, 1]
+            tw = output[:, :, :, 2]
+            th = output[:, :, :, 3]
+            cx = np.indices((grid_height, grid_width, n_anchors))[0]
+            cy = np.indices((grid_height, grid_width, n_anchors))[1]
+            bx = (sigmoid(tx) + cx) / grid_width
+            by = (sigmoid(ty) + cy) / grid_height
+            bw = (pw * np.exp(tw)) / self.model.input.shape[1].value
+            bh = (ph * np.exp(th)) / self.model.input.shape[2].value
+            x1 = (bx - bw / 2)
+            x2 = (x1 + bw)
+            y1 = (by - bh / 2)
+            y2 = (y1 + bh)
+            output[:, :, :, 0] = x1 * width
+            output[:, :, :, 1] = y1 * height
+            output[:, :, :, 2] = x2 * width
+            output[:, :, :, 3] = y2 * height
+            box = output[:, :, :, :4]"""
         for output in outputs:
             grid_height = output.shape[0]
             grid_width = output.shape[1]
@@ -91,11 +116,14 @@ class Yolo:
                         bw = bw / self.model.input.shape[1].value
                         bh = ph * np.exp(th)
                         bh = bh / self.model.input.shape[2].value
-                        x1 = (bx - bw / 2) * width
-                        y1 = (by - bh / 2) * height
-                        x2 = (bx + bw / 2) * width
-                        y2 = (by + bh / 2) * height
-                        box[cx, cy, anchor, :] = x1, y1, x2, y2
+                        x1 = (bx - bw / 2)
+                        x2 = (x1 + bw)
+                        y1 = (by - bh / 2)
+                        y2 = (y1 + bh)
+                        box[cx, cy, anchor, 0] = x1 * width
+                        box[cx, cy, anchor, 1] = y1 * height
+                        box[cx, cy, anchor, 2] = x2 * width
+                        box[cx, cy, anchor, 3] = y2 * height
             i += 1
             boxes.append(box)
             box_confidences.append(sigmoid(output[:, :, :, 4:5]))
