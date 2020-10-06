@@ -93,8 +93,8 @@ class Yolo:
                         bh = bh / self.model.input.shape[2].value
                         x1 = (bx - bw / 2) * width
                         y1 = (by - bh / 2) * height
-                        x2 = (x1 + bw) * width
-                        y2 = (y1 + bh) * height
+                        x2 = (bx + bw / 2) * width
+                        y2 = (by + bh / 2) * height
                         box[cx, cy, anchor, :] = x1, y1, x2, y2
             i += 1
             boxes.append(box)
