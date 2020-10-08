@@ -70,36 +70,8 @@ class Yolo:
         box_class_probs = []
         height, width = image_size
         i = 0
+
         for output in outputs:
-            boxes.append(output[:, :, :, :4])
-            grid_height = boxes[i].shape[0]
-            grid_width = boxes[i].shape[1]
-            n_anchors = self.anchors.shape[1]
-            pw = self.anchors[i, :, 0]
-            ph = self.anchors[i, :, 1]
-            tx = boxes[i][:, :, :, 0]
-            ty = boxes[i][:, :, :, 1]
-            tw = boxes[i][:, :, :, 2]
-            th = boxes[i][:, :, :, 3]
-            cx = np.indices((grid_height, grid_width, n_anchors))[0]
-            cy = np.indices((grid_height, grid_width, n_anchors))[1]
-            bx = (sigmoid(tx) + cx) / grid_width
-            by = (sigmoid(ty) + cy) / grid_height
-            bw = (pw * np.exp(tw)) / self.model.input.shape[1].value
-            bh = (ph * np.exp(th)) / self.model.input.shape[2].value
-            x1 = (bx - bw / 2)
-            x2 = (x1 + bw)
-            y1 = (by - bh / 2)
-            y2 = (y1 + bh)
-            boxes[i][:, :, :, 0] = x1 * width
-            boxes[i][:, :, :, 1] = y1 * height
-            boxes[i][:, :, :, 2] = x2 * width
-            boxes[i][:, :, :, 3] = y2 * height
-            # box = output[:, :, :, :4]
-            i += 1
-            box_confidences.append(sigmoid(output[:, :, :, 4:5]))
-            box_class_probs.append(sigmoid(output[:, :, :, 5:]))
-        """for output in outputs:
             grid_height = output.shape[0]
             grid_width = output.shape[1]
             anchors = self.anchors[i]
@@ -112,9 +84,9 @@ class Yolo:
                         ty = output[cx, cy, anchor, 1]
                         tw = output[cx, cy, anchor, 2]
                         th = output[cx, cy, anchor, 3]
-                        bx = sigmoid(tx) + cx
+                        bx = sigmoid(tx) + cy
                         bx = bx / grid_width
-                        by = sigmoid(ty) + cy
+                        by = sigmoid(ty) + cx
                         by = by / grid_height
                         bw = pw * np.exp(tw)
                         bw = bw / self.model.input.shape[1].value
@@ -127,6 +99,9 @@ class Yolo:
                         box[cx, cy, anchor, 0] = x1 * width
                         box[cx, cy, anchor, 1] = y1 * height
                         box[cx, cy, anchor, 2] = x2 * width
-                        box[cx, cy, anchor, 3] = y2 * height"""
-
+                        box[cx, cy, anchor, 3] = y2 * height
+            i += 1
+            boxes.append(box)
+            box_confidences.append(sigmoid(output[:, :, :, 4:5]))
+            box_class_probs.append(sigmoid(output[:, :, :, 5:]))
         return boxes, box_confidences, box_class_probs
