@@ -297,7 +297,7 @@ class Yolo:
             name_class = self.class_names[box_classes[i]]
             score = str(round(box_scores[i], 2))
             line = cv2.LINE_AA
-            cv2.putText(image, name_class + score, (x, y),
+            cv2.putText(image, name_class + ' ' + score, (x, y),
                         font, 0.5, (0, 0, 255), thickness=1, lineType=line)
         cv2.imshow(file_name, image)
         k = cv2.waitKey(0)
