@@ -22,6 +22,9 @@ def definiteness(matrix):
         raise TypeError("matrix must be a numpy.ndarray")
     if len(matrix) == 0:
         return None
+    if len(matrix):
+        if len(matrix) != len(matrix[0]):
+            return None
     w, v = np.linalg.eig(matrix)
     # count to classify
     pos = 0
