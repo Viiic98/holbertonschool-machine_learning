@@ -51,4 +51,7 @@ def definiteness(matrix):
     # All eigenvalues are <= 0
     if sem_neg == len(w):
         return "Negative semi-definite"
-    return "Indefinite"
+    if pos or sem_pos or neg or sem_neg:
+        return "Indefinite"
+    else:
+        return None
