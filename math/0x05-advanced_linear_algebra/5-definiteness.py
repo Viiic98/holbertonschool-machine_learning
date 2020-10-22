@@ -25,6 +25,8 @@ def definiteness(matrix):
     for x in matrix:
         if len(x) != len(matrix):
             return None
+    if not np.allclose(matrix, matrix.T):
+        return None
     w, v = np.linalg.eig(matrix)
     # count to classify
     pos = 0
