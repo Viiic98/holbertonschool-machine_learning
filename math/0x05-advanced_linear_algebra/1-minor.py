@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """ Minor Matrix """
+determinant = __import__('0-determinant').determinant
 
 
 def minor(matrix):
@@ -13,8 +14,13 @@ def minor(matrix):
           with the message matrix must be a non-empty square matrix
         Returns: the minor matrix of matrix
     """
-    if (type(matrix) is list and len(matrix) == 0) or type(matrix) is not list:
+    if type(matrix) is not list:
         raise TypeError("matrix must be a list of lists")
+    if type(matrix) is list and len(matrix) == 0:
+        raise TypeError("matrix must be a list of lists")
+    if type(matrix) is list and len(matrix) > 0:
+        if type(matrix[0]) is not list:
+            raise TypeError("matrix must be a list of lists")
     if len(matrix) > 0 and len(matrix[0]) > 0:
         if len(matrix) != len(matrix[0]):
             raise ValueError("matrix must be a non-empty square matrix")
@@ -29,8 +35,13 @@ def minor(matrix):
             for k in range(len(tmp)):
                 tmp[k] = tmp[k][0:j] + tmp[k][j + 1:]
             if len(tmp) > 1:
-                minor_matrix[i][j] = tmp[0][0] * tmp[1][1] -\
-                                     tmp[0][1] * tmp[1][0]
+                if len(tmp) > 2:
+                    minor(tm)
+                a = tmp[0][0]
+                b = tmp[0][1]
+                c = tmp[1][0]
+                d = tmp[1][1]
+                minor_matrix[i][j] = a * d - b * c
             else:
                 minor_matrix[i][j] = tmp[0][0]
     return minor_matrix
