@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ Minor Matrix """
-determinant = __import__('0-determinant').determinant
 
 
 def minor(matrix):
