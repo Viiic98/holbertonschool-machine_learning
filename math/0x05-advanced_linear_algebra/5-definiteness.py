@@ -18,12 +18,9 @@ def definiteness(matrix):
                 respectively
         - If matrix does not fit any of the above categories, return None
     """
-    if type(matrix) != np.ndarray:
-        raise TypeError("matrix must be a numpy.ndarray")
-    """if matrix.shape[0] == 0:
-        return None
-    if matrix.shape[0] != matrix.shape[1]:
-        return None"""
+    """if type(matrix) != np.ndarray:
+        raise TypeError("matrix must be a numpy.ndarray")"""
+
     w, v = np.linalg.eig(matrix)
     # count to classify
     pos = 0
