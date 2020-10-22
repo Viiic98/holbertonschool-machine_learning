@@ -44,6 +44,10 @@ def minor(matrix):
           with the message matrix must be a non-empty square matrix
         Returns: the minor matrix of matrix
     """
+    if type(matrix) is not list:
+        raise TypeError("matrix must be a list of lists")
+    if type(matrix[0]) is not list:
+        raise TypeError("matrix must be a list of lists")
     if len(matrix) == 0:
         raise ValueError("matrix must be a non-empty square matrix")
     if len(matrix) != len(matrix[0]):
