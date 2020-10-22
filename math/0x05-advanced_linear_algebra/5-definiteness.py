@@ -20,10 +20,10 @@ def definiteness(matrix):
     """
     if type(matrix) != np.ndarray:
         raise TypeError("matrix must be a numpy.ndarray")
-    if matrix.shape[0] == 0:
+    """if matrix.shape[0] == 0:
         return None
     if matrix.shape[0] != matrix.shape[1]:
-        return None
+        return None"""
     w, v = np.linalg.eig(matrix)
     # count to classify
     pos = 0
