@@ -49,8 +49,7 @@ def minor(matrix):
     for x in matrix:
         if type(x) is not list:
             raise TypeError("matrix must be a list of lists")
-    if len(matrix) > 0 and len(matrix[0]) > 0:
-        if len(matrix) != len(matrix[0]):
+        if len(matrix) != len(x):
             raise ValueError("matrix must be a non-empty square matrix")
 
     if len(matrix) == 1:
