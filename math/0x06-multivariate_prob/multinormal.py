@@ -41,10 +41,11 @@ class MultiNormal():
         """
         if type(x) is not np.ndarray:
             raise TypeError("x must be a numpy.ndarray")
+        d = self.mean.shape[0]
         if len(x.shape) != 2:
-            raise ValueError("x must have the shape ({d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(d))
         if x.shape[1] != 1:
-            raise ValueError("x must have the shape ({d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(d))
         inv = np.linalg.inv(self.cov)
         det = np.linalg.det(self.cov)
         a = 1 / np.sqrt((((2 * np.pi)**(x.shape[0]) * det)))
