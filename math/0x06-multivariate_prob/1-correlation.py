@@ -16,11 +16,10 @@ def correlation(C):
         Returns a numpy.ndarray of shape (d, d) containing the
         correlation matrix
     """
-    if type(C) is not np.ndarray:
+    """if type(C) is not np.ndarray:
         raise TypeError("C must be a numpy.ndarray")
     if len(C.shape) != 2:
         raise ValueError("C must be a 2D square matrix")
     if C.shape[0] != C.shape[1]:
-        raise ValueError("C must be a 2D square matrix")
-    d = C.shape[0]
+        raise ValueError("C must be a 2D square matrix")"""
     return np.corrcoef(C)
