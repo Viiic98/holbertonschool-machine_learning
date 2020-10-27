@@ -22,4 +22,8 @@ def correlation(C):
         raise ValueError("C must be a 2D square matrix")
     if C.shape[0] != C.shape[1]:
         raise ValueError("C must be a 2D square matrix")
-    return None
+    d = np.sqrt(np.diag(C))
+    outer_v = np.outer(d, d)
+    cor = C / outer_v
+    cor[C == 0] = 0
+    return cor
