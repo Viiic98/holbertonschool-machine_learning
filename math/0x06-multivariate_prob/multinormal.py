@@ -26,3 +26,29 @@ class MultiNormal():
             raise ValueError("data must contain multiple data points")
         self.mean = data.mean(axis=1, keepdims=True)
         self.cov = np.dot((data - self.mean), (data - self.mean).T) / (n - 1)
+
+    def pdf(self, x):
+        """calculates the PDF at a data point
+
+            - x is a numpy.ndarray of shape (d, 1) containing the data point
+              whose PDF should be calculated
+                - d is the number of dimensions of the Multinomial instance
+            - If x is not a numpy.ndarray, raise a TypeError with the message
+              x must be a numpy.ndarray
+            - If x is not of shape (d, 1), raise a ValueError with the message
+              x must have the shape ({d}, 1)
+            Returns the value of the PDF
+        """
+        if type(x) is not np.ndarray:
+            raise TypeError("x must be a numpy.ndarray")
+        if len(x.shape) != 2:
+            raise ValueError("x must have the shape ({d}, 1)")
+        if x.shape[1] != 1:
+            raise ValueError("x must have the shape ({d}, 1)")
+        inv = np.linalg.inv(self.cov)
+        det = np.linalg.det(self.cov)
+        a = 1 / np.sqrt((((2 * np.pi)**(x.shape[0]) * det)))
+        inv = np.matmul((x - self.mean).T, inv)
+        b = np.exp(-(1/2) * ((np.matmul(inv, (x - self.mean)))))
+        pdf = a * b
+        return pdf[0][0]
