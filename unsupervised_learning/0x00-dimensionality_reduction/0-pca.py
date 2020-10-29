@@ -18,11 +18,10 @@ def pca(X, var=0.95):
           dimensionality of the transformed X
     """
     u, s, vh = np.linalg.svd(X)
-    # sort in descending order eigenvalues
-    idx = [i for i in range(len(s)) if (s[i] / sum(s)) * 100 > var]
     # accumulative sum of eigenvalues
-    # cum = np.cumsum(s)
+    cum = np.cumsum(s) / sum(s)
     # Get indices less than variance
-    # idx = [i for i in range(len(cum)) if cum[i] < var]
+    idx = np.where(cum <= var, 1, 0)
+    n = sum(idx) + 1
     # vh Transpose is equal to W
-    return vh.T[:, idx]
+    return vh.T[:, :n]
