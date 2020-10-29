@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" PCA """
+""""""
 import numpy as np
 
 
@@ -19,10 +19,10 @@ def pca(X, var=0.95):
     """
     u, s, vh = np.linalg.svd(X)
     # sort in descending order eigenvalues
-    s = s[::-1]
+    idx = [i for i in range(len(s)) if (s[i] / sum(s)) * 100 > var]
     # accumulative sum of eigenvalues
-    cum = np.cumsum(s)
+    # cum = np.cumsum(s)
     # Get indices less than variance
-    idx = [i for i in range(len(cum)) if cum[i] < var]
+    # idx = [i for i in range(len(cum)) if cum[i] < var]
     # vh Transpose is equal to W
     return vh.T[:, idx]
