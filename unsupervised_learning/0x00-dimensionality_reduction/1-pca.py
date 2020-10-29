@@ -13,9 +13,9 @@ def pca(X, ndim):
         Returns: T, a numpy.ndarray of shape (n, ndim) containing
         the transformed version of X
     """
-    X = X - np.mean(X, axis=0)
-    u, s, vh = np.linalg.svd(X)
+    X_m = X - np.mean(X, axis=0)
+    u, s, vh = np.linalg.svd(X_m)
     # vh Transpose is equal to W
     W = vh[:ndim]
-    T = np.matmul(X, W.T)
+    T = np.matmul(X_m, W.T)
     return T
