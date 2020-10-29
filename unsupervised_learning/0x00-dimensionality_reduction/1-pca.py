@@ -16,6 +16,6 @@ def pca(X, ndim):
     X = X - np.mean(X, axis=0)
     u, s, vh = np.linalg.svd(X)
     # vh Transpose is equal to W
-    W = vh.T
-    T = np.matmul(X, W[:, :ndim])
+    W = vh[:ndim]
+    T = np.matmul(X, W.T)
     return T
