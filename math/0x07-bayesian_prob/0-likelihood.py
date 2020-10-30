@@ -26,8 +26,7 @@ def likelihood(x, n, P):
         Returns: a 1D numpy.ndarray containing the likelihood of obtaining
                  the data, x and n, for each probability in P, respectively
     """
-    # P(B | A)
-    if type(n) is not int or n < 0:
+    if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
     if type(x) is not int or x < 0:
         raise ValueError("x must be an integer that is greater than or"
@@ -41,5 +40,5 @@ def likelihood(x, n, P):
             raise ValueError("All values in P must be in the range [0, 1]")
     fact = np.math.factorial
     a = (fact(n)) / (fact(x) * fact(n - x))
-    b = P**x * (1 - P)**(n - x)
+    b = (P**x) * ((1 - P)**(n - x))
     return a * b
