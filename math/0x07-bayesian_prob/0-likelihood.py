@@ -39,6 +39,6 @@ def likelihood(x, n, P):
         if i < 0 or i > 1:
             raise ValueError("All values in P must be in the range [0, 1]")
     fact = np.math.factorial
-    a = (fact(n)) / (fact(x) * fact(n - x))
+    a = fact(n) / (fact(x) * fact(n - x))
     b = (P**x) * ((1 - P)**(n - x))
     return a * b
