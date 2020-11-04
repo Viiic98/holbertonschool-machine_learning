@@ -24,7 +24,6 @@ def initialize(X, k):
         return None
     if type(k) is not int or k < 1:
         return None
-    print(X.shape)
     n, d = X.shape
     min = np.amin(X, axis=0)
     max = np.amax(X, axis=0)
