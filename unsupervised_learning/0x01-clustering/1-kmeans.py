@@ -3,10 +3,10 @@
 import numpy as np
 
 
-def closest_centroid(points, centroids):
+def closest_centroid(X, centroids):
     """ returns an array containing the index to the nearest
         centroid for each point"""
-    distances = np.sqrt(((points - centroids[:, np.newaxis])**2).sum(axis=2))
+    distances = np.linalg.norm(X - centroids[:, np.newaxis], axis=2)
     return np.argmin(distances, axis=0)
 
 
@@ -32,32 +32,26 @@ def kmeans(X, k, iterations=1000):
               cluster in C that each data point belongs to
     """
     if type(X) is not np.ndarray or len(X.shape) != 2:
-        return None
+        return None, None
     if type(k) is not int or k < 1:
-        return None
+        return None, None
     if type(iterations) is not int or iterations < 1:
-        return None
+        return None, None
     n, d = X.shape
     min = np.amin(X, axis=0)
     max = np.amax(X, axis=0)
     centroids = np.random.uniform(low=min, high=max, size=(k, d))
-    f = 0
-    c = closest_centroid(X, centroids)
+    clss = closest_centroid(X, centroids)
     for i in range(iterations):
-        if len(np.unique(c)) != k and f == 0:
-            centroids = np.random.uniform(low=min, high=max, size=(k, d))
-            c = closest_centroid(X, centroids)
-            i -= 1
-        else:
-            f = 1
-            closes = closest_centroid(X, centroids)
-            copy = np.copy(centroids)
-            for c in range(k):
-                idx = np.where(closes == c)
+        copy = np.copy(centroids)
+        for c in range(k):
+            idx = np.where(clss == c)
+            if len(idx[0]) == 0:
+                centroids[c] = np.random.uniform(min, max, (1, d))
+            else:
                 mean = X[idx].mean(axis=0)
                 centroids[c] = mean
-            if np.array_equal(copy, centroids):
-                break
-    if f == 0:
-        return None, None
-    return centroids, closes
+        clss = closest_centroid(X, centroids)
+        if np.array_equal(copy, centroids):
+            break
+    return centroids, clss
