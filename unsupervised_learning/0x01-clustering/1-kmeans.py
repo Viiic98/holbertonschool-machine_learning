@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """ K-means """
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 def closest_centroid(points, centroids):
@@ -53,4 +52,6 @@ def kmeans(X, k, iterations=1000):
                 centroids[c] = mean
             if np.array_equal(copy, centroids):
                 break
+    if f == 0:
+        return None, None
     return centroids, closes
