@@ -24,12 +24,15 @@ def pdf(X, m, S):
     if type(S) is not np.ndarray or len(S.shape) != 2:
         return None
     n, d = X.shape
+    if d != m.shape[0] or (d, d) != S.shape:
+        return None
     inv = np.linalg.inv(S)
     det = np.linalg.det(S)
     a = 1 / np.sqrt((((2 * np.pi) ** (d) * det)))
     inv = np.matmul((X - m), inv)
+    np.seterr(over='ignore')
     b = np.exp(-(1 / 2) * ((np.matmul(inv, (X - m).T))))
     pdf = a * b
-    pdf = np.where(pdf >= 1e-300, pdf, pdf)
+    pdf = np.where(pdf >= 1e-300, pdf, 1e-300)
     idx = np.where(np.eye(pdf.shape[0], dtype=bool))
     return pdf[idx]
