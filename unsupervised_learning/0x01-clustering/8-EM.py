@@ -33,6 +33,16 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
               for each data point in each cluster
             - l is the log likelihood of the model
     """
+    if type(X) is not np.ndarray or len(X.shape) != 2:
+        return None, None, None, None, None
+    if type(k) is not int or k < 1:
+        return None, None, None, None, None
+    if type(iterations) is not int or iterations < 1:
+        return None, None, None, None, None
+    if type(tol) is not float or tol < 0:
+        return None, None, None, None, None
+    if type(verbose) is not bool:
+        return None, None, None, None, None
     pi, m, S = initialize(X, k)
     l_prev = 0
     for i in range(iterations):
