@@ -23,7 +23,7 @@ def expectation(X, pi, m, S):
         return None, None
     if type(pi) is not np.ndarray or len(pi.shape) != 1:
         return None, None
-    if (pi < 0).all():
+    if not np.isclose(pi.sum(), 1):
         return None, None
     if type(m) is not np.ndarray or len(m.shape) != 2:
         return None, None
