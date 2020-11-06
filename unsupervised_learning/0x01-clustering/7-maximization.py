@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" EM Maximization """
 import numpy as np
 
 
@@ -24,7 +25,8 @@ def maximization(X, g):
     k, _ = g.shape
     if n != g.shape[1]:
         return None, None, None
-
+    if not np.isclose(g.sum(), n):
+        return None, None, None
     m_c = g.sum(axis=1)
     pi = 1 / n * m_c
     m = np.matmul(g, X)
