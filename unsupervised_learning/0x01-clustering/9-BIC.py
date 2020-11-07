@@ -47,7 +47,7 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
     n, d = X.shape
     if kmax is None:
         kmax = n
-    if type(kmax) is not int or kmax < 1 or kmax < kmin:
+    if type(kmax) is not int or kmax < 1 or kmax <= kmin:
         return None, None, None, None
     if type(iterations) is not int or iterations < 1:
         return None, None, None, None
@@ -68,7 +68,7 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
         S_all.append(S)
         l_all.append(like)
         p = k * d
-        b.append(p * np.log(n) - 2 * l)
+        b.append(p * np.log(n) - 2 * like)
     pi_all = np.array(pi_all)
     m_all = np.array(m_all)
     S_all = np.array(S_all)
