@@ -29,7 +29,6 @@ def expectation(X, pi, m, S):
         return None, None
     if type(S) is not np.ndarray or len(S.shape) != 3:
         return None, None
-    np.seterr(over='ignore')
     n, d = X.shape
     k = pi.shape[0]
     if (k, d) != m.shape or (k, d, d) != S.shape:

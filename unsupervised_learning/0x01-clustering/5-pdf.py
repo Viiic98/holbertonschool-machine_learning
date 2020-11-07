@@ -29,10 +29,8 @@ def pdf(X, m, S):
     inv = np.linalg.inv(S)
     det = np.linalg.det(S)
     a = 1 / np.sqrt((((2 * np.pi) ** (d) * det)))
-    inv = np.matmul((X - m), inv)
-    np.seterr(over='ignore')
-    b = np.exp(-(1 / 2) * ((np.matmul(inv, (X - m).T))))
+    inv = np.einsum('...k,kl,...l->...', (X - m), inv, (X - m))
+    b = np.exp(-(1 / 2) * inv)
     pdf = a * b
     pdf = np.where(pdf >= 1e-300, pdf, 1e-300)
-    idx = np.where(np.eye(pdf.shape[0], dtype=bool))
-    return pdf[idx]
+    return pdf
