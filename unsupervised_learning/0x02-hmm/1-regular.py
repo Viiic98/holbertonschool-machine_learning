@@ -23,10 +23,12 @@ def regular(P):
             break
     if i == 999:
         return None
+    n = P.shape[0]
     # note transpose of P to find left eigenvectors
     eigenvalues, eigenvectors = np.linalg.eig(P.T)
     # find index of eigenvalue = 1
     idx = np.argmin(np.abs(eigenvalues - 1))
     w = np.real(eigenvectors[:, idx]).T
     # remember to normalize eigenvector to get a probability distribution
-    return w / np.sum(w)
+    steady = w / np.sum(w)
+    return steady.reshape((1, n))
