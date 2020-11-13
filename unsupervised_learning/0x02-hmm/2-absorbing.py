@@ -40,7 +40,8 @@ def absorbing(P):
         if len(nabs_sta) == 1 and nabs_sta in tr:
             return True
         # Remove states that could be transformed to absorbing state
-        nabs_sta = np.delete(nabs_sta, np.where(nabs_sta == tr)[0])
+        cust_where = np.array([x for x in nabs_sta for j in tr if x == j])
+        nabs_sta = np.delete(nabs_sta, np.where(nabs_sta == cust_where))
         if np.array_equal(nabs_sta, c):
             return False
         if len(nabs_sta) == 0:
