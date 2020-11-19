@@ -54,7 +54,10 @@ class BayesianOptimization():
             imp = (X_next - mu - self.xsi)
         n = len(sigma)
         Z = [imp[i] / sigma[i] if sigma[i] > 0 else 0 for i in range(n)]
-        EI = imp * norm.cdf(Z) + sigma * norm.pdf(Z)
+        EI = np.zeros(sigma.shape)
+        for i in range(n):
+            if sigma[i] > 0:
+                EI[i] = imp[i] * norm.cdf(Z[i]) + sigma[i] * norm.pdf(Z[i])
         return self.X_s[np.argmax(EI)], EI
 
     def optimize(self, iterations=100):
