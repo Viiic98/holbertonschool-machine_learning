@@ -68,6 +68,7 @@ class BayesianOptimization():
                 - Y_opt is a numpy.ndarray of shape (1,) representing the
                   optimal function value
         """
+        np.seterr(divide='ignore', invalid='ignore')
         sampled = []
         for _ in range(iterations):
             X_next, _ = self.acquisition()
