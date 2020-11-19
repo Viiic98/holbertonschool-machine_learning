@@ -52,7 +52,8 @@ class BayesianOptimization():
         if self.minimize:
             X_next = np.amin(self.gp.Y)
             imp = (X_next - mu - self.xsi)
-        Z = imp / sigma
+        n = len(sigma)
+        Z = [imp[i] / sigma[i] if sigma[i] > 0 else 0 for i in range(n)]
         EI = imp * norm.cdf(Z) + sigma * norm.pdf(Z)
         return self.X_s[np.argmax(EI)], EI
 
@@ -68,7 +69,6 @@ class BayesianOptimization():
                 - Y_opt is a numpy.ndarray of shape (1,) representing the
                   optimal function value
         """
-        np.seterr(divide='ignore', invalid='ignore')
         sampled = []
         for _ in range(iterations):
             X_next, _ = self.acquisition()
