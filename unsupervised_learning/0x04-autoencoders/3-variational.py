@@ -4,6 +4,7 @@ import tensorflow.keras as keras
 
 
 def sampling(inputs):
+    """ Sampling function """
     z_mean, z_log_var = inputs
     batch = keras.backend.shape(z_mean)[0]
     dim = keras.backend.int_shape(z_mean)[1]
