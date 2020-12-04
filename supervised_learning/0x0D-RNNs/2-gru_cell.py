@@ -23,7 +23,6 @@ class GRUCell:
               multiplication
             - The biases should be initialized as zeros
         """
-        print(i, h, o)
         self.Wz = np.random.normal(0, 1, (i + h, h))
         self.Wr = np.random.normal(0, 1, (i + h, h))
         self.Wh = np.random.normal(0, 1, (i + h, h))
