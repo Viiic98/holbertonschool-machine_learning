@@ -1,4 +1,4 @@
-#!/u1sr/bin/env python3
+#!/usr/bin/env python3
 """ Unigram BLEU score """
 import numpy as np
 
