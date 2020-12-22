@@ -20,7 +20,7 @@ def uni_bleu(references, sentence):
     # Apply mask and take the minimum length in masked references
     r = np.array([len(ref) for ref in references])[mask].sum()
 
-    candidate = {x: sentence.count(x) for x in sentence}
+    candidate = {x: 0 for x in sentence}
     max_match = 0
     for ref in references:
         match = 0
