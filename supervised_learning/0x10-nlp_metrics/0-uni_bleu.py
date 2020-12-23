@@ -18,7 +18,7 @@ def uni_bleu(references, sentence):
     # Take indices whit the same distance
     mask = np.where(r_list == r_list.min())
     # Apply mask and take the minimum length in masked references
-    r = np.array([len(ref) for ref in references])[mask].sum()
+    r = np.array([len(ref) for ref in references])[mask].min()
 
     candidate = {x: 0 for x in sentence}
     max_match = 0
