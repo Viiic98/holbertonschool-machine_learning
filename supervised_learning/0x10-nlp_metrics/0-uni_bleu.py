@@ -36,4 +36,4 @@ def uni_bleu(references, sentence):
         BP = 1
     else:
         BP = np.exp(1-(r / c))
-    return BP * P
+    return BP * np.exp(np.log(P).sum() * 1)
