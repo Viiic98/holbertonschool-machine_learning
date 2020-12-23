@@ -31,7 +31,7 @@ def ngram_bleu(references, sentence, n):
     # Take indices whit the same distance
     mask = np.where(r_list == r_list.min())
     # Apply mask and take the minimum length in masked references
-    r = np.array([len(ref) for ref in references])[mask].sum()
+    r = np.array([len(ref) for ref in references])[mask].min()
 
     cn = create_ngram(sentence, n)
     candidate = {x: 0 for x in cn}
@@ -62,12 +62,14 @@ def cumulative_bleu(references, sentence, n):
         - All n-gram scores should be weighted evenly
         Returns: the cumulative n-gram BLEU score
     """
-    cd = len(sentence)
+    c = len(sentence)
 
     precisions = []
     for i in range(n):
         P, r = ngram_bleu(references, sentence, i + 1)
         precisions.append(P)
-    BP = np.exp(1-(r / cd))
-
+    if c > r:
+        BP = 1
+    else:
+        BP = np.exp(1-(r / c))
     return BP * np.exp(np.log(precisions).sum() * (1/n))
