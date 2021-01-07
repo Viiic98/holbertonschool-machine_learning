@@ -39,6 +39,6 @@ class SelfAttention(tf.keras.layers.Layer):
         prev = self.W(tf.expand_dims(s_prev, 1))
         enc = self.U(hidden_states)
         e = self.V(tf.tanh(prev + enc))
-        w = tf.nn.softmax(e)
+        w = tf.nn.softmax(e, 1)
         context = e * hidden_states
         return tf.math.reduce_sum(context, 1), w
