@@ -19,18 +19,12 @@ class Dataset():
             - tokenizer_en is the English tokenizer created from the
               training set
         """
-        self.data_train = tfds.load('ted_hrlr_translate/pt_to_en',
-                                    split='train', as_supervised=True)
-        self.data_valid = tfds.load('ted_hrlr_translate/pt_to_en',
-                                    split='validation', as_supervised=True)
-        self.tokenizer_pt = tfds.deprecated.text.\
-            SubwordTextEncoder.build_from_corpus((pt.numpy() for pt, en
-                                                  in self.data_train),
-                                                 target_vocab_size=2 ** 13)
-        self.tokenizer_en = tfds.deprecated.text.\
-            SubwordTextEncoder.build_from_corpus((en.numpy() for pt, en
-                                                  in self.data_train),
-                                                 target_vocab_size=2 ** 13)
+        examples, _ = tfds.load('ted_hrlr_translate/pt_to_en',
+                                with_info=True, as_supervised=True)
+        self.data_train = examples['train']
+        self.data_valid = examples['validation']
+        self.tokenizer_pt, self.tokenizer_en = self.\
+            tokenize_dataset(self.data_train)
 
     def tokenize_dataset(self, data):
         """ creates sub-word tokenizers for our dataset
