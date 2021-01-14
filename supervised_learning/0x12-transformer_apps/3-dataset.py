@@ -6,7 +6,6 @@ import tensorflow_datasets as tfds
 
 class Dataset():
     """ loads and preps a dataset for machine translation """
-
     def __init__(self, batch_size, max_len):
         """ Class constructor
 
@@ -19,20 +18,26 @@ class Dataset():
             - tokenizer_en is the English tokenizer created from the
               training set
         """
-        self.MAX_LENGTH = max_len
+        def filter_max_length(self, x, y, max_length=max_len):
+            """ Filter function """
+            max_length = self.MAX_LENGTH
+            return tf.logical_and(tf.size(x) <= max_length,
+                                  tf.size(y) <= max_length)
+
         examples, metadata = tfds.load('ted_hrlr_translate/pt_to_en',
                                        with_info=True, as_supervised=True)
         train = examples['train']
+        self.tokenizer_pt, self.tokenizer_en = self.tokenize_dataset(train)
         data_train = train.map(self.tf_encode)
-        data_train = data_train.filter(self.filter_max_length)
+        data_train = data_train.filter(filter_max_length)
         data_train = data_train.cache()
         train_size = metadata.splits['train'].num_examples
-        data_train = data_train.shuffle(train_size).padded_batch(batch_size)
+        data_train = data_train.shuffle(train_size).\
+            padded_batch(batch_size, padded_shapes=([None], [None]))
         self.data_train = data_train.prefetch(tf.data.experimental.AUTOTUNE)
         data_valid = examples['validation'].map(self.tf_encode)
-        self.data_valid = data_valid.filter(self.filter_max_length).\
-            padded_batch(batch_size)
-        self.tokenizer_pt, self.tokenizer_en = self.tokenize_dataset(train)
+        self.data_valid = data_valid.filter(filter_max_length).\
+            padded_batch(batch_size, padded_shapes=([None], [None]))
 
     def tokenize_dataset(self, data):
         """ creates sub-word tokenizers for our dataset
@@ -85,9 +90,3 @@ class Dataset():
         result_pt.set_shape([None])
         result_en.set_shape([None])
         return result_pt, result_en
-
-    def filter_max_length(self, x, y):
-        """ Filter function """
-        max_length = self.MAX_LENGTH
-        return tf.logical_and(tf.size(x) <= max_length,
-                              tf.size(y) <= max_length)
