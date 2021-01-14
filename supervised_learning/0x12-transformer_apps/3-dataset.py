@@ -18,9 +18,8 @@ class Dataset():
             - tokenizer_en is the English tokenizer created from the
               training set
         """
-        def filter_max_length(self, x, y, max_length=max_len):
+        def filter_max_length(x, y, max_length=max_len):
             """ Filter function """
-            max_length = self.MAX_LENGTH
             return tf.logical_and(tf.size(x) <= max_length,
                                   tf.size(y) <= max_length)
 
