@@ -87,6 +87,7 @@ class Dataset():
         return result_pt, result_en
 
     def filter_max_length(self, x, y):
+        """ Filter function """
         max_length = self.MAX_LENGTH
         return tf.logical_and(tf.size(x) <= max_length,
                               tf.size(y) <= max_length)
