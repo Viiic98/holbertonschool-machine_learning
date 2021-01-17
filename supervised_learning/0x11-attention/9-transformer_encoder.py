@@ -48,7 +48,7 @@ class Encoder(tf.keras.layers.Layer):
             Returns: a tensor of shape (batch, input_seq_len, dm) containing
                      the encoder output
         """
-        seq_len = tf.shape(x)[1]
+        seq_len = x.shape[1]
 
         x = self.embedding(x)
         x *= tf.math.sqrt(tf.cast(self.dm, tf.float32))
