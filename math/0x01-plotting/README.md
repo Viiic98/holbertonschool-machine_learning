@@ -1,8 +1,10 @@
 # Plotting
 
-### INSTALLING GUIDES
+![Plt](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/9/b4601426ad02130836f9.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210213T021450Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=1d896643b8fe3b6664b9b8b01e3ba77e3cc1a89dde76edd3b5914f4e11439376)
 
-#### Installing Matplotlib 3.0
+## INSTALLING GUIDES
+
+### Installing Matplotlib 3.0
 ```
 pip install --user matplotlib==3.0
 pip install --user Pillow
@@ -10,7 +12,7 @@ sudo apt-get install python3-tk
 ```
 To check that it has been successfully downloaded, use pip list.
 
-#### Configure X11 Forwarding
+### Configure X11 Forwarding
 
 Update your Vagrantfile to include the following:
 ```
@@ -29,21 +31,21 @@ Once complete, you should simply be able to vagrant ssh to log into your VM and 
 
 Hint for emacs users: you will have to use emacs -nw to prevent it from launching its GUI.
 
-### Tasks
+## Tasks
 
-#### [Line Graph](./0-line.py)
+### [Line Graph](./0-line.py)
 - Complete the source code as a line graph
     - y should be plotted as a solid red line
     - The x-axis should range from 0 to 10
 
-#### [Scatter](./1-scatter.py)
+### [Scatter](./1-scatter.py)
 - Complete the following source code to plot x ↦ y as a scatter plot
     - The x-axis should be labeled Height (in)
     - The y-axis should be labeled Weight (lbs)
     - The title should be Men's Height vs Weight
     - The data should be plotted as magenta points
 
-#### [Change of scale](./2-change_scale.py)
+### [Change of scale](./2-change_scale.py)
 - Complete the following source code to plot x ↦ y as a line graph:
     - The x-axis should be labeled Time (years)
     - The y-axis should be labeled Fraction Remaining
@@ -51,7 +53,7 @@ Hint for emacs users: you will have to use emacs -nw to prevent it from launchin
     - The y-axis should be logarithmically scaled
     - The x-axis should range from 0 to 28650
 
-#### [Two is better than one](./3-two.py)
+### [Two is better than one](./3-two.py)
 - Complete the following source code to plot x ↦ y1 and x ↦ y2 as line graphs:
     - The x-axis should be labeled Time (years)
     - The y-axis should be labeled Fraction Remaining
@@ -62,7 +64,7 @@ Hint for emacs users: you will have to use emacs -nw to prevent it from launchin
     - x ↦ y2 should be plotted with a solid green line
     - A legend labeling x ↦ y1 as C-14 and x ↦ y2 as Ra-226 should be placed in the upper right hand corner of the plot
 
-#### [Frequency](./4-frequency.py)
+### [Frequency](./4-frequency.py)
 - Complete the following source code to plot a histogram of student scores for a project:
     - The x-axis should be labeled Grades
     - The y-axis should be labeled Number of Students
@@ -70,14 +72,14 @@ Hint for emacs users: you will have to use emacs -nw to prevent it from launchin
     - The title should be Project A
     - The bars should be outlined in black
 
-#### [All in One](./5-all_in_one.py)
+### [All in One](./5-all_in_one.py)
 - Complete the following source code to plot all 5 previous graphs in one figure:
     - All axis labels and plot titles should have a font size of x-small (to fit nicely in one figure)
     - The plots should make a 3 x 2 grid
     - The last plot should take up two column widths (see below)
     - The title of the figure should be All in One
 
-#### [Stacking Bars](./6-bars.py)
+### [Stacking Bars](./6-bars.py)
 - Complete the following source code to plot a stacked bar graph:
     - fruit is a matrix representing the number of fruit various people possess
         - The columns of fruit represent the number of fruit Farrah, Fred, and Felicia have, respectively
