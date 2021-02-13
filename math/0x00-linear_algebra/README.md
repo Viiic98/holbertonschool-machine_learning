@@ -1,6 +1,6 @@
 # LINEAR ALGEBRA
 
-![Matrix](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/9/54daaf81421a9b894688.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210213T021449Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=015e7e475e9163980fa50c1f95aeaa03ae602f16e81941d24c0a40a43b6df953)
+![Matrix](https://lh3.googleusercontent.com/proxy/xlp932B-PQtOq_KxBZFcV4Ns9FDN3Be15qzbmeTXbUTmAowl3GICcH9HxBvSgkw6LBjtrHSuHk24mNIUVN9WJQVSckN7W9zplzxq5vnkVaBI5MRlyb5HvP957WEcYiKvyLzy1M9iY-9PDPLSsq4)
 
 ## INSTALLING GUIDES
 

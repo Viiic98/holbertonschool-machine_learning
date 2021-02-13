@@ -1,7 +1,5 @@
 # Probability
 
-![](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2019/9/f7d69a8ae2b2f71d007b.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210213T021455Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=56139b030db364dbb69006f764cb0414534fe9f0ba13d65a67dd7d39d4d4b4a6)
-
 ## Mathematical Approximations
 - π = 3.1415926536
 - e = 2.7182818285

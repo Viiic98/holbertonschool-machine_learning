@@ -1,6 +1,6 @@
 # Bayesian Probability
 
-![](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2019/8/8358e1144bbb1fcc51b4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210213T021457Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=c5728d71721e71e31fb051bfaf03c664e9175306a612cfef86dc95c75c661303)
+![Bay](https://www.norledgemaths.com/uploads/1/0/8/1/10815708/105228283.png)
 
 ## Tasks
 

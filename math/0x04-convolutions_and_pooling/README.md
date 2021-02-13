@@ -1,6 +1,6 @@
 # Convolutions and Pooling
 
-![](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/11/ed9ca14839ad0201f19e.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210213T021455Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=8641c99f3d1989c2c942489fa1eceb29f804d2cb40455adb0363fd7c5162b751)
+![Conv](https://cdn-media-1.freecodecamp.org/images/Htskzls1pGp98-X2mHmVy9tCj0cYXkiCrQ4t)
 
 ## Tasks
 

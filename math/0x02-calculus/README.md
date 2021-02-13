@@ -1,6 +1,6 @@
 # Calculus
 
-![Calc](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/9/f36e4add97ca7a303b2f.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210213T021454Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=4073f51501fd23fa5e261f00d9218094042c87cd79c09655d44012647ee7e6e7)
+![Calc](https://lh3.googleusercontent.com/proxy/ZFKpstEf0CvCVvn0IBzgawwZM0hPXnLgf__FZ30mgcgIR7NBuuss7f-6i2TQzl9RNQAihNZlfEVclrjjKzU4L_PL0e88FCtAu7KP8w)
 
 ## Tasks
 

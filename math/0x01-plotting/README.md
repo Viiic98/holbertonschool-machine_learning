@@ -1,6 +1,6 @@
 # Plotting
 
-![Plt](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/9/b4601426ad02130836f9.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210213T021450Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=1d896643b8fe3b6664b9b8b01e3ba77e3cc1a89dde76edd3b5914f4e11439376)
+![Plt](http://dpsmaths.weebly.com/uploads/1/2/0/3/12037156/1634431_orig.jpg)
 
 ## INSTALLING GUIDES
 
