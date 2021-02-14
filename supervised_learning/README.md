@@ -1,5 +1,7 @@
 # SUPERVISED LEARNING PROJECTS
 
+## Projects
+
 ### [Binary Classification](./0x00-binary_classification)
 
 ### [Multiclass Classification](./0x01-multiclass_classification)
@@ -21,3 +23,17 @@
 ### [Transfer Learning](./0x09-transfer_learning)
 
 ### [Object Detection](./0x0A-object_detection)
+
+### [RNNs](./0x0D-RNNs)
+
+### [Natural Language Processing - Word Embeddings](./0x0F-word_embeddings)
+
+### [Natural Language Processing - Evaluation Metrics](./0x10-nlp_metrics)
+
+### [Time Series Forecasting](./0x0E-time_series)
+
+### [Attention](./0x11-attention)
+
+### [Transformer Applications](./0x12-transformer_apps)
+
+### [QA Bot](./0x13-qa_bot)
