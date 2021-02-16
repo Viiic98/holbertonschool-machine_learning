@@ -1,4 +1,6 @@
-# SUPERVISED LEARNING PROJECTS
+# SUPERVISED LEARNING
+
+![S](https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/07/Supervised-Learning-in-ML-tv.jpg)
 
 ## Projects
 
