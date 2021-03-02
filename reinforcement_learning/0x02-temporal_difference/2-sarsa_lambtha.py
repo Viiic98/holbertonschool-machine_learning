@@ -62,8 +62,8 @@ def sarsa_lambtha(env, Q, lambtha, episodes=5000, max_steps=100,
                                 * deltat * Et[state, action])
             if done:
                 break
-                state = new_state
-                action = new_action
+            state = new_state
+            action = new_action
         epsilon = (min_epsilon + (eps - min_epsilon)
                    * np.exp(-epsilon_decay * i))
     return Q
