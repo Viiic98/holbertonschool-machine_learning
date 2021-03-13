@@ -2,10 +2,13 @@
 """ script that prints the location of a specific user """
 import requests
 import time
+import sys
 
 
 if __name__ == '__main__':
-    user = 'https://api.github.com/users/holbertonschool'
+    if len(sys.argv) > 1:
+        user = sys.argv[1]
+
     r = requests.get(user)
     if r.status_code == 200:
         print(r.json()['location'])
