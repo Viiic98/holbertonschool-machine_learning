@@ -8,22 +8,15 @@ if __name__ == '__main__':
     now = time.time()
     r = requests.get("https://api.spacexdata.com/v4/launches/upcoming")
     if r.status_code == 200:
-        launches = r.json()
-        date = 0
-        for i, launch in enumerate(launches):
-            if launch['date_unix'] > date:
-                if launch['date_unix'] > now and date != 0:
-                    break
-                date = launch['date_unix']
-                idx = i
-        launch_name = launches[idx]['name']
-        date = launches[idx]['date_local']
-        rocket_id = launches[idx]['rocket']
+        launches = sorted(r.json(), key=lambda i: i['date_unix'])
+        launch_name = launches[0]['name']
+        date = launches[0]['date_local']
+        rocket_id = launches[0]['rocket']
         r = requests.get('https://api.spacexdata.com/v4/rockets/{}'.
                          format(rocket_id))
         if r.status_code == 200:
             rocket_name = r.json()['name']
-            pad_id = launches[idx]['launchpad']
+            pad_id = launches[0]['launchpad']
             r = requests.get('https://api.spacexdata.com/v4/launchpads/{}'.
                              format(pad_id))
             if r.status_code == 200:
