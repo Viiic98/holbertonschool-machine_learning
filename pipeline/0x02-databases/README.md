@@ -40,6 +40,32 @@
 
 ### [Email validation to sent](./18-valid_email.sql)
 
+### [List all databases](./22-list_databases)
+
+### [Create a database](./23-use_or_create_database)
+
+### [Insert document](./24-insert)
+
+### [All documents](./25-all)
+
+### [All matches](./26-match)
+
+### [Count](./27-count)
+
+### [Update](./28-update)
+
+### [Delete by match](./29-delete)
+
+### [List all documents in Python](./30-all.py)
+
+### [Insert a document in Python](./31-insert_school.py)
+
+### [Change school topics](./32-update_topics.py)
+
+### [Where can I learn Python?](./33-schools_by_topic.py)
+
+### [Log stats](./34-log_stats.py)
+
 ### [Optimize simple search](./100-index_my_names.sql)
 
 ### [Optimize search and score](./101-index_name_score.sql)
